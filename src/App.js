@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import UserProvider from "./context/userContext/UserProvider";
+import BuscadorPlatos from "./pages/BuscadorPlatos";
+import DetallePlato from "./pages/DetallePlato";
+import ListaPlatos from "./pages/ListaPlatos";
+import Home from "./views/Home";
+import Login from "./views/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <UserProvider>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Route path="lista-platos" element={<ListaPlatos />} />
+          <Route path="detalle-plato" element={<DetallePlato />} />
+          <Route path="buscador-platos" element={<BuscadorPlatos />} />
+          {/* VER SI DEJAMOS eSTE ULTIMO  */}
+          <Route path="*" element={<Login />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="/*" element={<Login />} />
+      </Routes>
+    </UserProvider>
   );
 }
 
