@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Alkemy Challenge "Carta de pciones de Menús" 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requerimientos Funcionales
 
-## Available Scripts
+En la pantalla de Home se deberá mostrar, además de los platos que conforman el menú:
+    ● Acumulativo de precio del menú.
+    ● Promedio de tiempo de preparación entre todos los platos.
+    ● Promedio de Healt Score entre todos los platos.
+    ● El menú debe tener 4 platos. Debe haber 2 veganos y 2 que no lo sean. Esto debe
+    validarse al intentar agregar un nuevo plato.
+    ● Se deberá poder eliminar un plato del menú, lo que generará nuevamente los promedios
+    y acumulativos (los mismos deben estar almacenados en el estado del componente
+    utilizando Hooks)
 
-In the project directory, you can run:
+## Requerimientos técnicos
 
-### `npm start`
+Aprovechando las características de React, deberán crearse las siguientes secciones, y modularizar las mismas en componentes reutilizables.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Además, para el manejo de peticiones HTTP deberá utilizarse la librería Axios. Y el sitio deberá ser responsive, y utilizar Bootstrap como punto de partida para aprovechar las características de la librería.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### 1. Formulario de Login
+El formulario se deberá renderizar al ingresar a cualquier ruta si el usuario no está autenticado, conteniendo los campos:
 
-### `npm test`
+    ● Email.
+    ● Password.
+    ● Botón de “Enviar”.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Al hacer click en “Enviar”, se deberá validar que ambos campos no estén vacíos, y mostrar un mensaje al usuario si lo estuviesen. Caso contrario, se deberá realizar una petición POST a la siguiente url, con los campos email y password en el BODY.
 
-### `npm run build`
+Los datos válidos para obtener un token son:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ● Email: challenge@alkemy.org
+    ● Password: react
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Se debe mostrar algún tipo de feedback al usuario mientras se está procesando la petición, no permitiendo que vuelva a accionar el botón de login hasta obtener una respuesta.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+En el caso de obtener un error de la API, se deberá mostrar una alerta (utilizando sweet alert), mientras que si es satisfactorio deberá redirigir al Home y almacenar el token obtenido en localStorage. Para
+realizar las validaciones no es necesario utilizar ninguna librería.
