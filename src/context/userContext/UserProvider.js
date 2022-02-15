@@ -8,8 +8,9 @@ const UserProvider = ({ children }) => {
 
     // chequemos existencia de token de usuario en local storage, si existe lo almacenamos en tokenUser
     useEffect(() => {
+      console.log('BUSCAMOS TOKEN en UserProvider')
         const userToken = window.localStorage.getItem("logged-carta-opcionmenu");
-        console.log('user JSON', userToken)
+        // console.log('user JSON', userToken)
         if (userToken) {
           const user = JSON.parse(userToken);
           readToken(user);
@@ -18,7 +19,7 @@ const UserProvider = ({ children }) => {
 
   // funcion para leer el token de inicio
   const readToken = (dataUser) => {
-    console.log("dataUser", dataUser);
+    // console.log("dataUser", dataUser);
     setTokenUser(dataUser.token);
     setEmailUser(dataUser.email);
   };

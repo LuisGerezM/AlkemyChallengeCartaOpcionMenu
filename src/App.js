@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import UserProvider from "./context/userContext/UserProvider";
@@ -24,10 +24,10 @@ function App() {
           <Route path="detalle-plato" element={<DetallePlato />} />
           <Route path="buscador-platos" element={<BuscadorPlatos />} />
           {/* VER SI DEJAMOS eSTE ULTIMO  */}
-          <Route path="*" element={<Login />} />
+          {/* <Route path="*" element={<Login />} /> */}
         </Route>
         <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<Login />} />
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </UserProvider>
   );
