@@ -5,23 +5,19 @@ import FormLogin from "../components/forms/formLogin/FormLogin";
 import AuthUserContext from "../context/userContext";
 import "./styles.css";
 
-
 const Login = () => {
+  const { tokenUser } = useContext(AuthUserContext);
 
-  const {tokenUser} = useContext(AuthUserContext)
-
-  let navigate = useNavigate()
+  let navigate = useNavigate();
 
   useEffect(() => {
-    console.log('tokenUser Login.js', tokenUser)
-    tokenUser && navigate('/')
+    // console.log('tokenUser Login.js', tokenUser)
+    tokenUser && navigate("/");
 
     return () => {
-      console.log('desmontando effect Login.js')
-    }
-  }, [tokenUser])
-  
-
+      // console.log('desmontando effect Login.js')
+    };
+  }, [tokenUser]);
 
   return (
     <Container className="cointainer-login ">

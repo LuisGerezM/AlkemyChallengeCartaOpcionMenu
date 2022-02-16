@@ -6,16 +6,16 @@ const UserProvider = ({ children }) => {
   const [tokenUser, setTokenUser] = useState(null);
   const [emailUser, setEmailUser] = useState("");
 
-    // chequemos existencia de token de usuario en local storage, si existe lo almacenamos en tokenUser
-    useEffect(() => {
-      console.log('BUSCAMOS TOKEN en UserProvider')
-        const userToken = window.localStorage.getItem("logged-carta-opcionmenu");
-        // console.log('user JSON', userToken)
-        if (userToken) {
-          const user = JSON.parse(userToken);
-          readToken(user);
-        }
-      }, []);
+  // chequemos existencia de token de usuario en local storage, si existe lo almacenamos en tokenUser
+  useEffect(() => {
+    // console.log('BUSCAMOS TOKEN en UserProvider')
+    const userToken = window.localStorage.getItem("logged-carta-opcionmenu");
+    // console.log('user JSON', userToken)
+    if (userToken) {
+      const user = JSON.parse(userToken);
+      readToken(user);
+    }
+  }, []);
 
   // funcion para leer el token de inicio
   const readToken = (dataUser) => {
@@ -28,7 +28,7 @@ const UserProvider = ({ children }) => {
     // console.log('user2', user)
     try {
       const fetchUser = await methodsApi.getUser(user);
-      console.log("fetchUser user provier", fetchUser);
+      //console.log("fetchUser user provier", fetchUser);
 
       if (fetchUser.status === 200) return fetchUser.data;
 
