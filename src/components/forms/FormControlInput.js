@@ -4,7 +4,7 @@ import { Form, FormControl } from "react-bootstrap";
 const FormControlInput = ({name, type, placeholder,}) => {
   return (
       <FormControl
-      name={name}
+        name={name}
         type="search"
         placeholder={placeholder}
         className=""

@@ -1,0 +1,14 @@
+.image {
+  width: 16rem;
+}
+
+/* // este es para lograr los ... en el parrafo de las cards .... con bootstrap es text-truncate */
+/* .elipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+} */
+
+.item-caract{
+    height: 180px !important;
+}

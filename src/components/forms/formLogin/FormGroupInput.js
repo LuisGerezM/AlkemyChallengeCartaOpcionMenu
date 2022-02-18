@@ -1,11 +1,11 @@
 import React from "react";
 import { Form, Row, Col, InputGroup } from "react-bootstrap";
 
-const FormGroupInput = ({ name, type, placeholder, msgError }) => {
+const FormGroupInput = ({ name, labelText, type, placeholder, msgError }) => {
   return (
     <Row className="mb-2">
       <Form.Group as={Col} md="12" controlId={`validationCustom-${name}`}>
-        <Form.Label className="text-primary fw-bolder">{name}</Form.Label>
+        <Form.Label className="text-primary fw-bolder">{labelText}</Form.Label>
         <InputGroup hasValidation>
           {type === "email" && (
             <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>

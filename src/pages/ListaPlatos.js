@@ -1,50 +1,45 @@
-import React, { useContext } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Button, Col, Row, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../components/button/CustomButton";
 import ItemList from "../components/card/ItemList";
 import MenuContext from "../context/menuContext";
 
 const ListaPlatos = () => {
-  const navegate = useNavigate();
-  const { showPage, setShowPage } = useContext(MenuContext);
+  const { platosSelected, loadingList, setLoadingList } = useContext(MenuContext);
 
-  const handleClickButton = (e) => {
-    e.preventDefault();
-    setShowPage(1);
-    console.log("click");
-    console.log("showPage en lista platos", showPage);
-  };
+  // useEffect(() => {
+  //   first
+
+  //   return () => {
+  //     second
+  //   }
+  // }, [third])
+
+  if (platosSelected.length === 0)
+    return (
+      <div>
+        <Alert className="mt-5 text-center" variant="info">
+        <Alert.Heading>Atención!!</Alert.Heading>
+        Aún no tienes platos seleccionados, por favor busca tu receta favorita</Alert>
+      </div>
+    );
 
   return (
     <>
-      <Row>
-        <Col
-          className="d-flex justify-content-center justify-content-sm-start ms-md-3"
-          sm={12}
-        >
-          <CustomButton
-            variant="outline-primary"
-            text="Buscar Platos"
-            type="button"
-            handleClickButton={handleClickButton}
-            size="lg"
-          />
+      <Row className="mt-sm-3">
+        <Col className="d-flex justify-content-center" sm={6}>
+          <ItemList />
         </Col>
-        <Row className="mt-sm-5">
-          <Col className="d-flex justify-content-lg-center" sm={6}>
-            <ItemList />
-          </Col>
-          <Col className="d-flex justify-content-lg-center" sm={6}>
-            <ItemList />
-          </Col>
-          <Col className="d-flex justify-content-lg-center" sm={6}>
-            <ItemList />
-          </Col>
-          <Col className="d-flex justify-content-lg-center" sm={6}>
-            <ItemList />
-          </Col>
-        </Row>
+        <Col className="d-flex justify-content-center" sm={6}>
+          <ItemList />
+        </Col>
+        <Col className="d-flex justify-content-center" sm={6}>
+          <ItemList />
+        </Col>
+        <Col className="d-flex justify-content-center" sm={6}>
+          <ItemList />
+        </Col>
       </Row>
     </>
   );

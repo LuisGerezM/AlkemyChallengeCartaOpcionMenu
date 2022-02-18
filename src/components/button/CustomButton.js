@@ -5,14 +5,13 @@ const CustomButton = ({
   variant = "primary",
   type = null,
   text,
-  loadingLogin = null,
+  disabledBtn = null,
   handleClickButton = null,
   size = null,
-  ref = null
 }) => {
   
   return (
-    <Button ref={ref} variant={variant} type={type} disabled={loadingLogin && true} onClick={handleClickButton ? handleClickButton : null} size={size}>
+    <Button variant={variant} type={type} disabled={disabledBtn && true} onClick={handleClickButton ? handleClickButton : null} size={size}>
       {text}
     </Button>
   );

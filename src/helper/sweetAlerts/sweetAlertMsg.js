@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 
-export function sweetAlertMsg(msg) {
+export function sweetAlertMsg(icon,msg,title) {
   Swal.fire({
-    icon: "error",
-    title: "Oops... Error",
+    icon: `${icon}`,
+    title: `${title}`,
     text: `${msg}`,
-    timer: 2500
+    timer: 3000
   });
 }

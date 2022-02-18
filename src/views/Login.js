@@ -12,7 +12,7 @@ const Login = () => {
 
   useEffect(() => {
     // console.log('tokenUser Login.js', tokenUser)
-    tokenUser && navigate("/");
+    tokenUser && navigate("/lista-platos");
 
     return () => {
       // console.log('desmontando effect Login.js')

@@ -1,5 +1,13 @@
 # Alkemy Challenge "Carta de pciones de Menús" 
 
+APIS:
+→ Autenticación:
+http://challenge-react.alkemy.org/ 
+
+→ API FOOD
+https://spoonacular.com/food-api/docs#Search-Recipes-Complex
+
+
 ## Requerimientos Funcionales
 
 En la pantalla de Home se deberá mostrar, además de los platos que conforman el menú:

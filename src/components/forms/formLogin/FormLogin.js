@@ -30,7 +30,7 @@ const FormLogin = () => {
     isMounted.current = true;
     return () => {
       // ejecutado cuándo se desmonta; para evitar error de subsripcion asincrona
-     // console.log("isMounted.current desmontando", isMounted.current);
+      // console.log("isMounted.current desmontando", isMounted.current);
       // este setLoadingLogin tengo que ponerlo AQUI, ya que cuando todo va bien y guardo el token usando la fcion radToken, entonces el componente Login.js que tiene un efecto que redirecciona a home cada vez que cambie la variable token, me manda directamente al home. Por tanto donde estaba antes, linea 82, no se llegaba a ejecutar debido a que el componente ya estaba demontado. Usando esta REFERENCIA puedo decirle que me lo demonte, y soluciono el error "To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function" .... Recurso: https://stackoverflow.com/questions/59209337/react-axios-request-asks-for-useeffect-cleanup-function-to-cancel-all-subscripti?rq=1
       setLoadingLogin(false);
       isMounted.current = false;
@@ -50,7 +50,7 @@ const FormLogin = () => {
     //react
     setLoadingLogin(true);
     //llamada API
-    let email = event.target.username.value;
+    let email = event.target.email.value;
     let password = event.target.password.value;
 
     // setInputsForm({email, password})
@@ -74,23 +74,28 @@ const FormLogin = () => {
       // console.log("checkLogin === error", checkLogin);
 
       // error network
-      !checkLogin.error.response && sweetAlertMsg(checkLogin.error.message);
+      !checkLogin.error.response && sweetAlertMsg('error', checkLogin.error.message, "Oops... Error");
 
       // other error
-      sweetAlertMsg(checkLogin.error.response.data.error);
+      sweetAlertMsg('error', checkLogin.error.response.data.error, "Oops... Error");
     }
-    //  setLoadingLogin(false);
+    setLoadingLogin(false);
   };
 
+  // challenge@alkemy.org
+  // react
+  
   return (
     <Form noValidate validated={errorValidated} onSubmit={handleSubmit}>
       <FormGroupInput
-        name={"username"}
+        labelText={"Email"}
+        name={"email"}
         type={"email"}
-        placeholder={"Username"}
+        placeholder={"Ingrese su Email"}
         msgError={"Por favor ingresa un correo válido"}
       />
       <FormGroupInput
+        labelText={"Password"}
         name={"password"}
         type={"password"}
         placeholder={"Ingrese Contraseña"}
@@ -101,7 +106,7 @@ const FormLogin = () => {
           <CustomButton
             type="submit"
             text="Enviar"
-            loadingLogin={loadingLogin}
+            disabledBtn={loadingLogin}
           />
         </Col>
         <Col className="d-flex justify-content-center mt-4" md={12}>
