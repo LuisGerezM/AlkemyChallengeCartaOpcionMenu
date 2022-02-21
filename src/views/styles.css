@@ -1,0 +1,15 @@
+body {
+  background-color: #e0e3e8;
+  font-family: "Rubik", sans-serif;
+}
+
+
+/* login */
+.cointainer-login {
+  min-height: 100vh;
+}
+
+.card-login {
+  background-color: #fafbff;
+  border-radius: 3rem;
+}

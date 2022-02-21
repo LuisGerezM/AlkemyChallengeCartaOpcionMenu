@@ -1,14 +1,23 @@
 # Alkemy Challenge "Carta de pciones de Menús" 
 
+[![](https://spoonacular.com/application/frontend/images/food-api/ontology2.svg)](https://spoonacular.com/food-api)
+
+APIS:
+- Autenticación:
+http://challenge-react.alkemy.org/ 
+
+- API FOOD
+https://spoonacular.com/food-api/docs
+
 ## Requerimientos Funcionales
 
 En la pantalla de Home se deberá mostrar, además de los platos que conforman el menú:
-    ● Acumulativo de precio del menú.
-    ● Promedio de tiempo de preparación entre todos los platos.
-    ● Promedio de Healt Score entre todos los platos.
-    ● El menú debe tener 4 platos. Debe haber 2 veganos y 2 que no lo sean. Esto debe
+* Acumulativo de precio del menú.
+* Promedio de tiempo de preparación entre todos los platos.
+* Promedio de Healt Score entre todos los platos.
+* El menú debe tener 4 platos. Debe haber 2 veganos y 2 que no lo sean. Esto debe
     validarse al intentar agregar un nuevo plato.
-    ● Se deberá poder eliminar un plato del menú, lo que generará nuevamente los promedios
+* Se deberá poder eliminar un plato del menú, lo que generará nuevamente los promedios
     y acumulativos (los mismos deben estar almacenados en el estado del componente
     utilizando Hooks)
 
