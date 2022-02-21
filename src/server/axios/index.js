@@ -26,7 +26,8 @@ const getUser = async (user) => {
 
 // poninedole paginacion
 const getRecipes = async (recipe, page = 0, number = 4) => {
-  console.log("recipe, page", recipe, " - ", page);
+  // console.log('page y number', page, ' - ', number)
+  // console.log("recipe, page", recipe, " - ", page);
   const request = await axios.get(
     `${baseUrl2}?apiKey=${apiKey}&query=${recipe}&number=${number}&offset=${
       page * number

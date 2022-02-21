@@ -21,7 +21,7 @@ const BuscadorPlatos = () => {
 
   // const { loadingSearchFood, setLoadingSearchFood, setPage, inputSearch } =
   //   usePagination(setResultSearch);
-  console.log("resultSearch en Buscador Plato", resultSearch);
+  // console.log("resultSearch en Buscador Plato", resultSearch);
   return (
     <>
       <Col
@@ -33,6 +33,14 @@ const BuscadorPlatos = () => {
         {/* hamburger */}
         <FormSearch />
       </Col>
+
+      {loadingSearchFood && (
+        <Row>
+          {/* ver si esta COL del skeleton sirven para algo, mepa q NO SIRVEN... sacar sino */}
+          {/* <Col className="d-flex justify-content-center" sm={12}> */}{" "}
+          <SkeletonLoadingRecipes /> {/* </Col> */}
+        </Row>
+      )}
 
       {resultSearch?.length !== 0 && (
         <>
@@ -49,6 +57,7 @@ const BuscadorPlatos = () => {
                 </strong>
               </div>
             }
+
             {resultSearch?.map((element) => (
               <Col
                 key={element.id}
@@ -59,26 +68,27 @@ const BuscadorPlatos = () => {
               </Col>
             ))}
 
-            <Row className="my-4">
-              {console.log("loadingSearchFood", loadingSearchFood)}
-              <Col className="d-flex justify-content-center" sm={12}>
-                {loadingSearchFood && (
-                  <>
-                  {/* ver si esta COL del skeleton sirven para algo, mepa q NO SIRVEN... sacar sino */}
-                    <Col className="d-flex justify-content-center" sm={6}>
-                      {" "}
-                      <SkeletonLoadingRecipes />{" "}
-                    </Col>
-                  </>
-                )}
-              </Col>
-              <Col className="d-flex justify-content-center">
-                <SeeMoreResult
-                  setResultSearch={setResultSearch}
-                  setPage={setPage}
-                />
-              </Col>
-            </Row>
+            {/* <Row className="my-4"> */}
+            {/* {console.log("loadingSearchFood", loadingSearchFood)} */}
+            {/* <Col className="d-flex justify-content-center" sm={12}> */}
+            {loadingSearchFood && (
+              <>
+                {/* ver si esta COL del skeleton sirven para algo, mepa q NO SIRVEN... sacar sino */}
+                {/* <Col className="d-flex justify-content-center" sm={12}> */}{" "}
+                <SkeletonLoadingRecipes /> {/* </Col> */}
+              </>
+            )}
+            {/* </Col> */}
+            {/* <Row> */}
+              <Col sm={12} className="mt-3 mb-5 d-flex justify-content-center">
+              <SeeMoreResult
+                setResultSearch={setResultSearch}
+                setPage={setPage}
+              />
+            </Col>
+            {/* </Row> */}
+            
+            {/* </Row> */}
           </Row>
         </>
       )}

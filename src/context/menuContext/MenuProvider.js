@@ -1,10 +1,10 @@
-import { sweetAlertMsg } from "helper/sweetAlerts/sweetAlertMsg";
 import React, { useEffect, useState } from "react";
+import { INITIAL_PAGE } from "helper/constValues";
+import { sweetAlertMsg } from "helper/sweetAlerts/sweetAlertMsg";
 import { useNavigate } from "react-router-dom";
 import MenuContext from ".";
 import methodsApi from "../../server/axios";
 
-const INITIAL_PAGE = 0;
 const MenuProvider = ({ children }) => {
   // es para los platos que da ADD el usuario. CHEQUEAR que plato VEGANo no sea 2.
   const [platosSelected, setPlatosSelected] = useState([]);
@@ -30,7 +30,7 @@ const MenuProvider = ({ children }) => {
 
   const handleToggleBtnClick = (element) => {
     setBtnsActionsValue("3"); // con esto hacemos que NO esté seleccionado ningun boton del toogle
-    console.log(element);
+    // console.log(element);
     const { page } = element;
     // console.log("page in handle toogle btn click", page);
     //setClickToggleBtn(value);
@@ -38,7 +38,6 @@ const MenuProvider = ({ children }) => {
   };
 
   const fetchRecipes = async (recipe) => {
-    setLoadingSearchFood(true);
     try {
       const fetch = await methodsApi.getRecipes(recipe);
 
@@ -58,7 +57,7 @@ const MenuProvider = ({ children }) => {
     if (page === INITIAL_PAGE) return;
 
     const addPage = async (recipe) => {
-      console.log("page in addPage", page);
+      // console.log("page in addPage", page);
       try {
         // DESPUES PENSAR, QUIZA pueda pasarle para que me DEVUELVA 6 en la busqueda.
         const fetch = await methodsApi.getRecipes(recipe, page);
@@ -132,6 +131,7 @@ const MenuProvider = ({ children }) => {
         handleToggleBtnClick,
         btnsActionsValue,
         setBtnsActionsValue,
+        INITIAL_PAGE,
       }}
     >
       {children}
