@@ -1,8 +1,6 @@
 import { Formik } from "formik";
-import usePagination from "hooks/usePagination";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Form } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import MenuContext from "../../../context/menuContext";
 import { sweetAlertMsg } from "../../../helper/sweetAlerts/sweetAlertMsg";
 import CustomButton from "../../button/CustomButton";
@@ -12,28 +10,32 @@ const FormSearch = () => {
   const {
     fetchRecipes,
     setInputSearch,
+    resultSearch,
     setResultSearch,
-    setLoadingSearchFood,
+    setDisabledButtonMoreRecipes,
   } = useContext(MenuContext);
-
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     let input = e.target.search.value;
     const fetch = await fetchRecipes(input);
-
-    if (fetch.results.length === 0) {
+    console.log("fetch", fetch);
+    // este msj es para cuándo no exista la receta
+    if (fetch.results.length === 0 && resultSearch.length === 0) {
       sweetAlertMsg(
         "info",
         "No existe esa receta, quiza escribiste mal",
         "Atención"
       );
+    } else if (fetch.results.length === 0) {
+      sweetAlertMsg("info", "No hay más recetas", "Atención");
+      setDisabledButtonMoreRecipes(true);
     } else {
       setInputSearch(input);
       setResultSearch(fetch.results);
+      setDisabledButtonMoreRecipes(false);
     }
-
     e.target.search.value = "";
   };
 
@@ -65,7 +67,7 @@ const FormSearch = () => {
       <FormControlInput
         name="search"
         type="search"
-        placeholder="Search"
+        placeholder="Buscar..."
         aria-label="Search"
       />
       <CustomButton

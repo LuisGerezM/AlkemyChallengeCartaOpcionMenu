@@ -1,13 +1,10 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import NavbarHome from "../components/navbar/NavbarHome";
 import { Outlet, useNavigate } from "react-router-dom";
-import { sweetAlertConfirm } from "../helper/sweetAlerts/sweetAlertsConfirm";
-import FormControlInput from "../components/forms/FormControlInput";
-import { Button, Form, Container, Row, Col } from "react-bootstrap";
-import CustomButton from "../components/button/CustomButton";
-import FormSearch from "../components/forms/formSearch/FormSearch";
-import MenuContext from "../context/menuContext";
+import { Container, Row, Col } from "react-bootstrap";
+
 import ToggleBtnGroup from "../components/button/ToggleBtnGroup";
+import MenuContext from "context/menuContext";
 
 // en el HOME se va a mostrar la lista de platos
 // http://localhost:3000/buscador-platos
@@ -15,17 +12,17 @@ import ToggleBtnGroup from "../components/button/ToggleBtnGroup";
 const Home = () => {
   //const [clickToggleBtn, setClickToggleBtn] = useState("1");
 
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
-  const handleToggleBtnClick = (element) => {
-    // console.log(element)
-    const { page } = element;
-    // console.log('page', page)
-    //setClickToggleBtn(value);
-    navigate(page);
-  };
+  // const handleToggleBtnClick = (element) => {
+  //   // console.log(element)
+  //   const { page } = element;
+  //   console.log("page in handle toogle btn click", page);
+  //   //setClickToggleBtn(value);
+  //   navigate(page);
+  // };
 
-  // const { showPage } = useContext(MenuContext);
+  const { handleToggleBtnClick } = useContext(MenuContext);
 
   // const navigate = useNavigate();
 

@@ -1,15 +1,15 @@
 import React from "react";
-import { Form, FormControl } from "react-bootstrap";
+import { FormControl } from "react-bootstrap";
 
-const FormControlInput = ({name, type, placeholder,}) => {
+const FormControlInput = ({ name, type, placeholder }) => {
   return (
-      <FormControl
-        name={name}
-        type="search"
-        placeholder={placeholder}
-        className=""
-        aria-label={type === "search" ? 'Search' : ''}
-      />
+    <FormControl
+      name={name}
+      type="search"
+      placeholder={placeholder}
+      className=""
+      aria-label={type === "search" ? "Search" : ""}
+    />
   );
 };
 
