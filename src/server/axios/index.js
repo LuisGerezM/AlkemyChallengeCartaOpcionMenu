@@ -24,7 +24,7 @@ const getUser = async (user) => {
 //   return request;
 // };
 
-// poninedole paginacion
+// paginacion
 const getRecipes = async (recipe, page = 0, number = 4) => {
   // console.log('page y number', page, ' - ', number)
   // console.log("recipe, page", recipe, " - ", page);

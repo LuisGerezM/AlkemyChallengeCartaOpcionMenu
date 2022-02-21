@@ -61,7 +61,7 @@ const MenuProvider = ({ children }) => {
       try {
         // DESPUES PENSAR, QUIZA pueda pasarle para que me DEVUELVA 6 en la busqueda.
         const fetch = await methodsApi.getRecipes(recipe, page);
-        console.log("fetch", fetch);
+        // console.log("fetch", fetch);
         if (fetch.status === 200) {
           if (fetch.data.results.length === 0) {
             // si me retorna un results vacio, es por que ya NO hay mas items

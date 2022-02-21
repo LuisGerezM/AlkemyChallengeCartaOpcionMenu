@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import "./styles.css";
 
 const CustomButton = ({
   variant = "primary",
@@ -9,9 +10,15 @@ const CustomButton = ({
   handleClickButton = null,
   size = null,
 }) => {
-  
   return (
-    <Button variant={variant} type={type} disabled={disabledBtn && true} onClick={handleClickButton ? handleClickButton : null} size={size}>
+    <Button
+      className={`${text === "Search" && "btn-search"}`}
+      variant={variant}
+      type={type}
+      disabled={disabledBtn && true}
+      onClick={handleClickButton ? handleClickButton : null}
+      size={size}
+    >
       {text}
     </Button>
   );
