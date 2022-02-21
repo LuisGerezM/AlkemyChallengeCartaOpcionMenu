@@ -5,29 +5,33 @@ import { Col, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
 const ActionsItemCard = ({
-  handlerShowItem,
-  handlerAddItem,
-  handlerDeleteItem,
-  item
+  handlerShowItem = null,
+  handlerAddItem = null,
+  handlerDeleteItem = null,
+  item,
 }) => {
   const params = useLocation(); // obtengo un obj con eltos. y uno d estos es pathname: "/buscador-platos"
 
   return (
     <Row>
       <Col className="d-flex justify-content-evenly">
+
         {/* show */}
-        <CustomTooltipButton
-          variant="outline-primary"
-          text={<i className="fas fa-eye"></i>}
-          handleClickButton={handlerShowItem}
-          placement="left"
-          msg="Ver Detalles"
-          item={item}
-          link='link'
-        />
+        {params.pathname !== "/detalles-plato" && (
+          <CustomTooltipButton
+            variant="outline-primary"
+            text={<i className="fas fa-eye"></i>}
+            handleClickButton={handlerShowItem}
+            placement="left"
+            msg="Ver Detalles"
+            item={item}
+            link="link"
+          />
+        )}
 
         {/* add */}
-        {params.pathname === "/buscador-platos" && (
+        {/* CHEQUEAR Q ANDE BIEN ESTO */}
+        {(params.pathname === "/buscador-platos" || params.pathname === "/detalles-plato") && (
           <CustomTooltipButton
             variant="outline-success"
             text={<i className="fas fa-plus-circle"></i>}

@@ -28,6 +28,7 @@ const MenuProvider = ({ children }) => {
   const [btnsActionsValue, setBtnsActionsValue] = useState("1");
   let navigate = useNavigate();
 
+
   const handleToggleBtnClick = (element) => {
     setBtnsActionsValue("3"); // con esto hacemos que NO esté seleccionado ningun boton del toogle
     // console.log(element);
@@ -52,6 +53,14 @@ const MenuProvider = ({ children }) => {
       setLoadingSearchFood(false);
     }
   };
+
+
+  // Agregar una receta en el menu
+  const handlerAddItem = (item) => {
+    console.log("add");
+   // console.log("item", item);
+  };
+
 
   useEffect(() => {
     if (page === INITIAL_PAGE) return;
@@ -132,6 +141,7 @@ const MenuProvider = ({ children }) => {
         btnsActionsValue,
         setBtnsActionsValue,
         INITIAL_PAGE,
+        handlerAddItem
       }}
     >
       {children}

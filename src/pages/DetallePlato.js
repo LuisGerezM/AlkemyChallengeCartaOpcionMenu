@@ -1,9 +1,8 @@
-import React from 'react'
+import DetailItemSelected from "components/card/DetailItemSelected";
+import React from "react";
 
 const DetallePlato = () => {
-  return (
-    <div>DetallePlato</div>
-  )
-}
+  return <DetailItemSelected />;
+};
 
-export default DetallePlato
+export default DetallePlato;

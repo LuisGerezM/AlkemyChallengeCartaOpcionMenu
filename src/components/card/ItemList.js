@@ -3,7 +3,15 @@ import MenuContext from "context/menuContext";
 import useShortenSummary from "hooks/useShortenSummary";
 import React, { useContext } from "react";
 import { useState } from "react";
-import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
+import {
+  Anchor,
+  Button,
+  Card,
+  Col,
+  Image,
+  ListGroup,
+  Row,
+} from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import ActionsItemCard from "./ActionsItemCard";
 import "./style.css";
@@ -14,8 +22,7 @@ const ItemList = ({ item }) => {
   // console.log("summary", summary);
   // acorta texto .. dejando con ... despues de unas cuántas palabras
   const content = useShortenSummary(summary);
-  const { handleToggleBtnClick } = useContext(MenuContext);
-
+  const { handleToggleBtnClick, handlerAddItem } = useContext(MenuContext);
 
   const handlerShowItem = (item) => {
     // AQUI con el id tengo que hacer el llamado para el otro endpoint, donde uso el id para buscar
@@ -30,11 +37,13 @@ const ItemList = ({ item }) => {
     console.log("item", item);
   };
 
-  const handlerAddItem = (item) => {
-    console.log("add");
-    console.log("item", item);
-  };
+  // puesto en contexto para USARLO tnto aqui como en DetailItemSelect
+  // const handlerAddItem = (item) => {
+  //   console.log("add");
+  //   console.log("item", item);
+  // };
 
+  // PROBAR EL WIDTH A UN 50% o un 40% ... o un POQUITITO MAS Ancho VER SI FUNCA
   return (
     <Card
       border="primary"
