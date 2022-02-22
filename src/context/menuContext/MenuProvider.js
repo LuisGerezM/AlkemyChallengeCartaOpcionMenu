@@ -5,14 +5,21 @@ import { useNavigate } from "react-router-dom";
 import MenuContext from ".";
 import methodsApi from "../../server/axios";
 
+// despues sacar esto a blobales; este es para que la suma de los platos veganos y los no veganos, si nos dan 4, entonces está en el limite. NO puede agregar más; vada vez que cambie uno de esos 2 vamos a usar un effect, y si las suma de ambos da 4, DESHABILITAMOS el bot´ton de agregar
+const MAX_LIMIT_PLATOS = 4;
+
 const MenuProvider = ({ children }) => {
-  // es para los platos que da ADD el usuario. CHEQUEAR que plato VEGANo no sea 2.
-  const [platosSelected, setPlatosSelected] = useState([]);
-
-  const [platoVeganoSeleccionado, setPlatoVeganoSeleccionado] = useState(0);
-
   // ////// states seccion lista //////
   // Este loading ver si se lo va a dejar o no
+
+  // platos seleccionado por usuario
+  const [platosSelected, setPlatosSelected] = useState([]);
+
+  // vegano <= 2
+  const [platoVeganoSeleccionado, setPlatoVeganoSeleccionado] = useState(0);
+  // otras dieras <= 2
+  const [platoOtrasDietas, setPlatoOtrasDietas] = useState(0);
+
   const [loadingList, setLoadingList] = useState(false);
 
   // ////// fin states seccion lista //////
@@ -132,12 +139,28 @@ const MenuProvider = ({ children }) => {
   }, [page]);
   // ----- fin busquedas agregando página -----
 
-  // ----- Acciones items receta (cards) -----
+  // ----- Acciones items receta (cards) BUSCADOR-platos o DETALLES-plato -----
 
-  // --> Agregar una receta en buscador-platos
+  // --> Agregar una receta en BUSCADOR-platos o DETALLES-plato
   const handlerAddItem = (item) => {
     console.log("add");
-    // console.log("item", item);
+    console.log("item", item);
+    sweetAlertMsg("info", "Agregando plato al menu", "Atención");
+
+    // 0 CONTROLAR que la acumulacion total de platos NO sea 4.
+    // si NO es 4
+    // 1 controlar si es plato vegano
+    //  1.1 si es plato vegano, ver que no hayan 2 ya
+    //    1.1.1 si no hay 2, sumarlo,
+    //    1.1.2 sino mostrar un mensaje de error
+    // 2 si no es plato vegano
+    //   2.1 ver que no hayan 2 del otro
+    //    2.1.1 si no hay, sumarlo
+    //    2.1.2 si es que hay 2 del otro dar error
+
+    setTimeout(() => {
+      sweetAlertMsg("success", "Plato agregado correctamente", "Atención");
+    }, 1500);
   };
 
   // PRUEBASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS: Cauliflower y hamburger
@@ -152,7 +175,7 @@ const MenuProvider = ({ children }) => {
     handleToggleBtnClick({ page: "detalles-plato" });
   };
 
-  // --- busqueda de recet por id --//
+  // --- busqueda de receta por id --//
   useEffect(() => {
     const fetchRecipeById = async (id) => {
       // console.log("page in addPage", page);
@@ -166,7 +189,7 @@ const MenuProvider = ({ children }) => {
           if (fetch.data === [])
             throw new Error(`Vaya ocurrió un error al buscar la receta`);
 
-            console.log('fetch.data en effect')
+          console.log("fetch.data en effect");
           setDetailsRecipeSelected(fetch.data);
           // handleToggleBtnClick({ page: "detalles-plato" }); // redirección
         } else {
@@ -193,13 +216,17 @@ const MenuProvider = ({ children }) => {
 
   // ---------- fin Acciones items receta (cards) ---------
 
-  // ----- fin seccion buscar-plato  -----
+  // ////// fin seccion buscar-plato  //////
+
+  // ////// seccion lista-plato  //////
 
   // --> Eliminar receta en lista-platos
   const handlerDeleteItem = (item) => {
     console.log("delete");
     console.log("item", item);
   };
+
+  // ////// seccion lista-plato  //////
 
   return (
     <MenuContext.Provider

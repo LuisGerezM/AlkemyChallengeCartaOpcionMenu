@@ -15,7 +15,6 @@ const ActionsItemCard = ({
   return (
     <Row>
       <Col className="d-flex justify-content-evenly">
-
         {/* show */}
         {params.pathname !== "/detalles-plato" && (
           <CustomTooltipButton
@@ -30,8 +29,8 @@ const ActionsItemCard = ({
         )}
 
         {/* add */}
-        {/* CHEQUEAR Q ANDE BIEN ESTO */}
-        {(params.pathname === "/buscador-platos" || params.pathname === "/detalles-plato") && (
+        {(params.pathname === "/buscador-platos" ||
+          params.pathname === "/detalles-plato") && (
           <CustomTooltipButton
             variant="outline-success"
             text={<i className="fas fa-plus-circle"></i>}
@@ -39,7 +38,7 @@ const ActionsItemCard = ({
             placement="right"
             msg="Agregar al Menu"
             item={item}
-            section={params.pathname === "/detalles-plato" && 'w-50'}
+            section={params.pathname === "/detalles-plato" && "w-50"}
           />
         )}
 

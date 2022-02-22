@@ -5,7 +5,7 @@ import { useButtonsPages } from "../../hooks/useButtonsPages";
 
 const ToggleBtnGroup = ({ handleToggleBtnClick }) => {
   // const [btnsActionsValue, setBtnsActionsValue] = useState("1");
-  const {btnsActionsValue, setBtnsActionsValue} = useContext(MenuContext)
+  const { btnsActionsValue, setBtnsActionsValue } = useContext(MenuContext);
   const buttonsActions = useButtonsPages();
 
   return (

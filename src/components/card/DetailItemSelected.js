@@ -3,7 +3,7 @@ import MenuContext from "context/menuContext";
 import React, { useContext } from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 import ActionsItemCard from "./ActionsItemCard";
-import './style.css'
+import "./style.css";
 
 const DetailItemSelected = () => {
   const { handlerAddItem, loadingSelectedDetails, detailsRecipeSelected } =
@@ -22,7 +22,7 @@ const DetailItemSelected = () => {
 
   return (
     //   VER SI DJAMOS O SACAMOS EL WIDT Y EL HEIG
-    <Card className="mt-3 w-50 " border="primary">
+    <Card className="mt-3" border="primary">
       <Card.Img
         className="mt-2 mx-auto"
         variant="top"
