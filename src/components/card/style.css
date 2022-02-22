@@ -1,6 +1,9 @@
-.image {
-  width: 16rem;
-}
+/* .image {
+  width: 75%;
+} */
+/* .card{
+  width: 90%;
+} */
 
 /* // este es para lograr los ... en el parrafo de las cards .... con bootstrap es text-truncate */
 /* .elipsis {
@@ -9,6 +12,20 @@
   overflow: hidden;
 } */
 
-.item-caract{
-    height: 180px !important;
+.item-caract {
+  height: 180px !important;
+}
+
+/* sm  */
+@media screen and (max-width: 575px) {
+  .card {
+    width: 100%;
+  }
+}
+
+/* md ... */
+@media screen and (min-width: 576px) and (max-width: 990px) {
+  .card {
+    width: 75%;
+  }
 }

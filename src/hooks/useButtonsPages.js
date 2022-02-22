@@ -9,6 +9,8 @@ export const useButtonsPages = () => {
     {
       name: "Buscar Platos",
       page: "buscador-platos",
+      //  para probar el detalle plato cuando no m deja hacer consultas la api
+      // page: "detalles-plato",
       value: "2",
       variant: "outline-success",
     },

@@ -9,8 +9,9 @@ const CustomTooltipButton = ({
   placement,
   msg,
   item,
-  link = null,
+  section = null,
 }) => {
+ 
   return (
     <OverlayTrigger
       placement={placement}
@@ -31,7 +32,7 @@ const CustomTooltipButton = ({
           {text}
         </Link>
       ) : ( */}
-        <Button variant={variant} onClick={() => handleClickButton(item)}>
+        <Button className={`${section && section }`} variant={variant} onClick={() => handleClickButton(item)}>
           {text}
         </Button>
       {/* )} */}

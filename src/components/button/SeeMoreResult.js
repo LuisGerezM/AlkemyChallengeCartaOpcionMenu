@@ -3,9 +3,11 @@ import MenuContext from "context/menuContext";
 import CustomButton from "./CustomButton";
 
 const SeeMoreResult = () => {
-  const { setPage, disabledButtonMoreRecipes } = useContext(MenuContext);
+  const { page, setPage, disabledButtonMoreRecipes } = useContext(MenuContext);
 
   const handlerMoreResult = () => {
+    // console.log('entrando a handle more result')
+    // console.log('page en handle more result', page)
     setPage((prevPage) => prevPage + 1);
   };
 
