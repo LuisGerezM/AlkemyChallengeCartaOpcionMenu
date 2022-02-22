@@ -22,38 +22,20 @@ const ItemList = ({ item }) => {
   // console.log("summary", summary);
   // acorta texto .. dejando con ... despues de unas cuántas palabras
   const content = useShortenSummary(summary);
-  const { handleToggleBtnClick, handlerAddItem } = useContext(MenuContext);
-
-  const handlerShowItem = (item) => {
-    // AQUI con el id tengo que hacer el llamado para el otro endpoint, donde uso el id para buscar
-    console.log("show");
-    console.log("item", item);
-    // AQUI hacer la llamada asincrona para el detalle del plato con la URL con id; iniciando el spiner o skeleton
-    handleToggleBtnClick({ page: "detalles-plato" });
-  };
-
-  const handlerDeleteItem = (item) => {
-    console.log("delete");
-    console.log("item", item);
-  };
-
-  // puesto en contexto para USARLO tnto aqui como en DetailItemSelect
-  // const handlerAddItem = (item) => {
-  //   console.log("add");
-  //   console.log("item", item);
-  // };
+  const {
+    //handleToggleBtnClick,
+    handlerAddItem,
+    handlerShowItem,
+    handlerDeleteItem,
+  } = useContext(MenuContext);
 
   // PROBAR EL WIDTH A UN 50% o un 40% ... o un POQUITITO MAS Ancho VER SI FUNCA
   return (
-    <Card
-      border="primary"
-      className="mt-3 text-primary"
-      style={{ width: "18rem" }}
-    >
+    <Card border="primary w-100 w-sm-75" className="mt-3 text-primary">
       <Card.Header className="fw-bold">{title}</Card.Header>
       <ListGroup variant="flush">
         <ListGroup.Item>
-          <Image className="image col col-sm-12" src={image} />
+          <Image className="w-100 col col-sm-12" src={image} />
         </ListGroup.Item>
         <ListGroup.Item className="item-caract">
           {" "}

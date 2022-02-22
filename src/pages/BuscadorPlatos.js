@@ -63,6 +63,7 @@ const BuscadorPlatos = () => {
                 key={element.id}
                 className="d-flex justify-content-center"
                 sm={6}
+                lg={4}
               >
                 <ItemList item={element} />
               </Col>

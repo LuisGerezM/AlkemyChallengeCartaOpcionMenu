@@ -57,9 +57,9 @@ const FormSearch = () => {
       }}
       validate={(valueValidate) => {
         let errors = {};
-        const {search} = valueValidate
-        console.log('search validate', search.length)
-        console.log("valueValidate", valueValidate);
+        const { search } = valueValidate;
+        // console.log("search validate", search.length);
+        // console.log("valueValidate", valueValidate);
         // validamos que tenga algo escrito
         if (!search) {
           errors.search = "Debes escribir lo que quieras buscar";
@@ -78,10 +78,10 @@ const FormSearch = () => {
         const { search } = valueSubmit;
         // mostramos el loading de la 1ra busqueda
         setLoadingSearchFood(true);
-        console.log("search buscado", search);
+        // console.log("search buscado", search);
         //let input = e.target.search.value;
         const fetch = await fetchRecipes(search);
-        console.log("fetch", fetch);
+        // console.log("fetch", fetch);
         // este msj es para cuándo no exista la receta
         if (fetch.results.length === 0) {
           sweetAlertMsg(
@@ -89,6 +89,8 @@ const FormSearch = () => {
             "No existe esa receta, quiza escribiste mal",
             "Atención"
           );
+          setResultSearch([]);
+
           // } else if (fetch.results.length === 0) {
           //   sweetAlertMsg("info", "No hay más recetas", "Atención");
           //   setDisabledButtonMoreRecipes(true);
@@ -104,7 +106,7 @@ const FormSearch = () => {
           <FormControlInput
             name="search"
             type="search"
-            placeholder="Buscar..."
+            placeholder="Buscar... ej: Cauliflower"
             aria-label="Search"
             values={values}
             errors={errors}

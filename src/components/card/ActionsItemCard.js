@@ -39,6 +39,7 @@ const ActionsItemCard = ({
             placement="right"
             msg="Agregar al Menu"
             item={item}
+            section={params.pathname === "/detalles-plato" && 'w-50'}
           />
         )}
 

@@ -1,0 +1,17 @@
+/* 1 skeleton  */
+@media screen and (max-width: 575px) {
+  .two-skeleton {
+    display: none !important;
+  }
+
+  .third-skeleton {
+    display: none !important;
+  }
+}
+
+/* 2 skeletons */
+@media screen and (min-width: 576px) and (max-width: 990px) {
+  .third-skeleton {
+    display: none !important;
+  }
+}
