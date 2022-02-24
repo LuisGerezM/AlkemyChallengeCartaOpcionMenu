@@ -1,24 +1,14 @@
-import CustomButton from "components/button/CustomButton";
+import React, { useContext } from "react";
 import MenuContext from "context/menuContext";
 import useShortenSummary from "hooks/useShortenSummary";
-import React, { useContext } from "react";
-import { useState } from "react";
-import {
-  Anchor,
-  Button,
-  Card,
-  Col,
-  Image,
-  ListGroup,
-  Row,
-} from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Card, Image, ListGroup } from "react-bootstrap";
 import ActionsItemCard from "./ActionsItemCard";
 import "./style.css";
 
-const ItemList = ({ item }) => {
+const ItemList = ({ item, from }) => {
+  console.log('from item list', from)
   // console.log("item", item);
-  const { title, image, summary } = item;
+  const { title, image, summary, pricePerServing, servings } = item;
   // console.log("summary", summary);
   // acorta texto .. dejando con ... despues de unas cuántas palabras
   const content = useShortenSummary(summary);
@@ -53,12 +43,20 @@ const ItemList = ({ item }) => {
             dangerouslySetInnerHTML={{ __html: content.latestPharagraph }}
           />
         </ListGroup.Item>
+        <ListGroup.Item >
+          {" "}
+          <Card.Subtitle className="mb-2 text-muted">
+            Costo del plato:
+          </Card.Subtitle>
+            <div className="fw-bolder">${(pricePerServing/servings).toFixed(2)}</div>
+        </ListGroup.Item>
         <ListGroup.Item>
           <ActionsItemCard
             handlerShowItem={handlerShowItem}
             handlerDeleteItem={handlerDeleteItem}
             handlerAddItem={handlerAddItem}
             item={item}
+            from={from}
           />
         </ListGroup.Item>
       </ListGroup>

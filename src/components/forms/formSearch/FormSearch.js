@@ -10,7 +10,6 @@ const FormSearch = () => {
   const {
     fetchRecipes,
     setInputSearch,
-    resultSearch,
     setResultSearch,
     setDisabledButtonMoreRecipes,
     setPage,
@@ -116,7 +115,7 @@ const FormSearch = () => {
           />
           <CustomButton
             variant="outline-success"
-            text="Search"
+            text="Buscar"
             type="submit"
             //handleClickButton={handleClickButton}
           />

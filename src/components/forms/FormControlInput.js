@@ -1,7 +1,7 @@
 import MessageAlert from "components/alerts/MessageAlert";
 import { ErrorMessage } from "formik";
 import React from "react";
-import { Col, Form, FormControl } from "react-bootstrap";
+import { Col, FormControl } from "react-bootstrap";
 
 const FormControlInput = ({
   name,

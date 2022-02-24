@@ -4,21 +4,24 @@ import { sweetAlertMsg } from "helper/sweetAlerts/sweetAlertMsg";
 import { useNavigate } from "react-router-dom";
 import MenuContext from ".";
 import methodsApi from "../../server/axios";
+import { updateInformationMenu } from "helper/menuProvider/informationMenu";
 
 // despues sacar esto a blobales; este es para que la suma de los platos veganos y los no veganos, si nos dan 4, entonces está en el limite. NO puede agregar más; vada vez que cambie uno de esos 2 vamos a usar un effect, y si las suma de ambos da 4, DESHABILITAMOS el bot´ton de agregar
 const MAX_LIMIT_PLATOS = 4;
 
 const MenuProvider = ({ children }) => {
   // ////// states seccion lista //////
-  // Este loading ver si se lo va a dejar o no
 
-  // platos seleccionado por usuario
+  // score MENU recetas en lista-platos 
+  const [infoScoreMenu, setInfoScoreMenu] = useState({})
+
+  // platos seleccionado por usuario <= 4
   const [platosSelected, setPlatosSelected] = useState([]);
 
   // vegano <= 2
-  const [platoVeganoSeleccionado, setPlatoVeganoSeleccionado] = useState(0);
+  const [platosVeganoSeleccionado, setPlatosVeganoSeleccionado] = useState(0);
   // otras dieras <= 2
-  const [platoOtrasDietas, setPlatoOtrasDietas] = useState(0);
+  const [platosOtrasDietas, setPlatosOtrasDietas] = useState(0);
 
   const [loadingList, setLoadingList] = useState(false);
 
@@ -46,6 +49,14 @@ const MenuProvider = ({ children }) => {
   const [idRecipeSelected, setIdRecipeSelected] = useState(null);
 
   // ////// fin states seccion detalles //////
+
+  // ////// estado disabled boton agregar //////
+  const [stateBtnAdd, setStateBtnAdd] = useState(false);
+  // ////// fin  estado disabled boton agregar //////
+
+  // ////// accion (add or delete) boton en pagina detalle  //////
+  const [actionBtnDetails, setActionBtnDetails] = useState(0);
+  // ////// fin  estado disabled boton agregar //////
 
   // ////// navegación entre secciones //////
   let navigate = useNavigate();
@@ -125,10 +136,11 @@ const MenuProvider = ({ children }) => {
     //   }
     // };
 
+    // CAPA q hay q cambiar esto ... que NO sea con el input search.. aunque pueda ser que NO necesite usar un if aqui.. probar
     if (inputSearch) {
       // const fetchMore = async () => {
       //   await
-      // };
+      // }
       // fetchMore();
       addPage(inputSearch);
     }
@@ -143,9 +155,63 @@ const MenuProvider = ({ children }) => {
 
   // --> Agregar una receta en BUSCADOR-platos o DETALLES-plato
   const handlerAddItem = (item) => {
-    console.log("add");
+    /* 
+platosSelected  setPlatosSelected
+platosVeganoSeleccionado  setPlatosVeganoSeleccionado
+platosOtrasDietas  setPlatosOtrasDietas
+*/
     console.log("item", item);
-    sweetAlertMsg("info", "Agregando plato al menu", "Atención");
+
+    // // maximo 4 platos en el menu --> hecho en un effecto
+    // if (platosSelected.length === 4) {
+    //   // deshabilitamos el BOTON agregar cuándo sea 4 ya
+    //   setStateBtnAdd(true);
+    //   sweetAlertMsg(
+    //     "error",
+    //     "Ya tienes tu menu con 4 comidas 😁",
+    //     "Atención"
+    //   );
+    //   return;
+    // }
+
+    if (item.vegan) {
+      // es vegano
+      if (platosVeganoSeleccionado === 2)
+        return sweetAlertMsg(
+          "error",
+          "Ya tienes tu menu con 2 comidas veganas 😁",
+          "Atención"
+        );
+
+      setPlatosSelected((prevPlatosSelected) =>
+        prevPlatosSelected.concat(item)
+      );
+      setPlatosVeganoSeleccionado(
+        (prevPlatoVeganoSel) => prevPlatoVeganoSel + 1
+      );
+      sweetAlertMsg(
+        "success",
+        "Plato agregado correctamente - dieta vegana",
+        "Felicitaciones"
+      );
+    } else {
+      if (platosOtrasDietas === 2)
+        return sweetAlertMsg(
+          "error",
+          "Ya tienes tu menu con 2 comidas no veganas 😁",
+          "Atención"
+        );
+
+      setPlatosSelected((prevPlatosSelected) =>
+        prevPlatosSelected.concat(item)
+      );
+      setPlatosOtrasDietas((prevPlatoOtraDieta) => prevPlatoOtraDieta + 1);
+      sweetAlertMsg(
+        "success",
+        "Plato agregado correctamente",
+        "Felicitaciones"
+      );
+    }
 
     // 0 CONTROLAR que la acumulacion total de platos NO sea 4.
     // si NO es 4
@@ -157,15 +223,40 @@ const MenuProvider = ({ children }) => {
     //   2.1 ver que no hayan 2 del otro
     //    2.1.1 si no hay, sumarlo
     //    2.1.2 si es que hay 2 del otro dar error
-
-    setTimeout(() => {
-      sweetAlertMsg("success", "Plato agregado correctamente", "Atención");
-    }, 1500);
   };
+
+  useEffect(() => {
+    // maximo 4 platos en el menu --> hecho en un effecto
+    console.log("platosSelected CAMBIOOO", platosSelected);
+
+    if (platosSelected.length === 4) {
+      // deshabilitamos el BOTON agregar cuándo sea 4 ya
+      setStateBtnAdd(true);
+      sweetAlertMsg(
+        "info",
+        "Ya tienes tu menu con 4 comidas 😁",
+        "Felicitaciones"
+      );
+    }
+
+    // trabajamos la información del menu total
+    setInfoScoreMenu(updateInformationMenu(platosSelected))
+    
+    
+    return () => {
+      console.log("desmontando efecto MenuProvider - platosSelected");
+    };
+  }, [platosSelected]);
 
   // PRUEBASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS: Cauliflower y hamburger
   // --> Ver detalle receta en LISTA y BUSCADOR platos
-  const handlerShowItem = (item) => {
+  const handlerShowItem = (item, from) => {
+    // from indica desde dónde lo estamos llamando al show; si es desde buscador o lista para renderizar el boton de add o de eliminar
+    console.log("from", from);
+    from === "lista" ? setActionBtnDetails(1) : setActionBtnDetails(2);
+
+    console.log("item", item);
+
     setBtnsActionsValue("3"); // con esto hacemos que NO esté seleccionado ningun boton del toogle
     console.log("item", item);
 
@@ -220,13 +311,17 @@ const MenuProvider = ({ children }) => {
 
   // ////// seccion lista-plato  //////
 
-  // --> Eliminar receta en lista-platos
+  // ----- score MENU recetas en lista-platos -----
+
+  // ----- score MENU recetas en lista-platos -----
+
+  // ----- Eliminar receta en lista-platos -----
   const handlerDeleteItem = (item) => {
     console.log("delete");
     console.log("item", item);
   };
 
-  // ////// seccion lista-plato  //////
+  // ////// fin seccion lista-plato  //////
 
   return (
     <MenuContext.Provider
@@ -254,6 +349,9 @@ const MenuProvider = ({ children }) => {
         handlerDeleteItem,
         loadingSelectedDetails,
         detailsRecipeSelected,
+        stateBtnAdd,
+        actionBtnDetails,
+        infoScoreMenu
       }}
     >
       {children}

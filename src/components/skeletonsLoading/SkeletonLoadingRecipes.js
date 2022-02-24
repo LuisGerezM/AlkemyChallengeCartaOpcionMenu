@@ -1,8 +1,7 @@
 import React from "react";
-import { Card, Col, ListGroup } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import "./styles.css";
 
 const SkeletonLoadingRecipes = () => {
   return (
@@ -29,7 +28,7 @@ const SkeletonLoadingRecipes = () => {
         </SkeletonTheme>
       </Col>
       <Col
-        className="two-skeleton d-flex justify-content-center mt-3"
+        className="d-none d-sm-flex justify-content-center mt-3"
         sm={6}
         lg={4}
       >
@@ -54,7 +53,7 @@ const SkeletonLoadingRecipes = () => {
         </SkeletonTheme>
       </Col>
       <Col
-        className="third-skeleton d-flex justify-content-center mt-3"
+        className="d-none d-lg-flex justify-content-center mt-3"
         sm={6}
         lg={4}
       >

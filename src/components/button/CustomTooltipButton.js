@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 const CustomTooltipButton = ({
   variant,
@@ -10,8 +9,9 @@ const CustomTooltipButton = ({
   msg,
   item,
   section = null,
+  disabled,
+  from
 }) => {
- 
   return (
     <OverlayTrigger
       placement={placement}
@@ -32,9 +32,14 @@ const CustomTooltipButton = ({
           {text}
         </Link>
       ) : ( */}
-        <Button className={`${section && section }`} variant={variant} onClick={() => handleClickButton(item)}>
-          {text}
-        </Button>
+      <Button
+        className={`${section && section}`}
+        variant={variant}
+        onClick={() => handleClickButton(item, from)}
+        disabled={disabled}
+      >
+        {text}
+      </Button>
       {/* )} */}
     </OverlayTrigger>
   );
