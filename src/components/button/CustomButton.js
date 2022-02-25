@@ -12,7 +12,7 @@ const CustomButton = ({
 }) => {
   return (
     <Button
-      className={`${text === "Search" && "btn-search"}`}
+      className={`${text === "Buscar" && "btn-search"}`}
       variant={variant}
       type={type}
       disabled={disabledBtn && true}

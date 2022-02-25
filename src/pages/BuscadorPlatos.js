@@ -5,6 +5,7 @@ import ItemList from "../components/card/ItemList";
 import MenuContext from "../context/menuContext";
 import SeeMoreResult from "components/button/SeeMoreResult";
 import SkeletonLoadingRecipes from "components/skeletonsLoading/SkeletonLoadingRecipes";
+import MessageAlert from "components/alerts/MessageAlert";
 
 const BuscadorPlatos = () => {
   // cuando empiece a escribir mostrar un skeletom ui en vez del loading
@@ -22,6 +23,7 @@ const BuscadorPlatos = () => {
   // const { loadingSearchFood, setLoadingSearchFood, setPage, inputSearch } =
   //   usePagination(setResultSearch);
   // console.log("resultSearch en Buscador Plato", resultSearch);
+
   return (
     <>
       <Col
@@ -42,7 +44,7 @@ const BuscadorPlatos = () => {
         </Row>
       )}
 
-      {resultSearch?.length !== 0 && (
+      {resultSearch?.length !== 0 ? (
         <>
           {/* DSPUES VER SI DEJO O NO ESTE BOTON POR Q NO PIDEN EN EL EJERCICIO  */}
           {/* <Col className="mt-3" sm={4}>
@@ -65,7 +67,7 @@ const BuscadorPlatos = () => {
                 sm={6}
                 lg={4}
               >
-                <ItemList item={element} />
+                <ItemList item={element} from='buscador'/>
               </Col>
             ))}
 
@@ -81,17 +83,25 @@ const BuscadorPlatos = () => {
             )}
             {/* </Col> */}
             {/* <Row> */}
-              <Col sm={12} className="mt-3 mb-5 d-flex justify-content-center">
+            <Col sm={12} className="mt-3 mb-5 d-flex justify-content-center">
               <SeeMoreResult
                 setResultSearch={setResultSearch}
                 setPage={setPage}
               />
             </Col>
             {/* </Row> */}
-            
+
             {/* </Row> */}
           </Row>
         </>
+      ) : (
+        !loadingSearchFood && (
+          <MessageAlert
+            message="Busca tu receta favorita"
+            color={"info"}
+            heading="Bienvenido!!!"
+          />
+        )
       )}
     </>
   );

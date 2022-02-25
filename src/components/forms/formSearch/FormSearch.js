@@ -5,12 +5,12 @@ import MenuContext from "../../../context/menuContext";
 import { sweetAlertMsg } from "../../../helper/sweetAlerts/sweetAlertMsg";
 import CustomButton from "../../button/CustomButton";
 import FormControlInput from "../FormControlInput";
+import '../styles.css'
 
 const FormSearch = () => {
   const {
     fetchRecipes,
     setInputSearch,
-    resultSearch,
     setResultSearch,
     setDisabledButtonMoreRecipes,
     setPage,
@@ -116,7 +116,7 @@ const FormSearch = () => {
           />
           <CustomButton
             variant="outline-success"
-            text="Search"
+            text="Buscar"
             type="submit"
             //handleClickButton={handleClickButton}
           />

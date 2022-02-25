@@ -12,18 +12,6 @@ const getUser = async (user) => {
   return request;
 };
 
-// https://dev.to/tutrinh/basic-using-async-and-await-with-axios-ad5 --> const response = await axios.get('url')
-
-// https://api.spoonacular.com/recipes/complexSearch?apiKey=be0e1c28da614b94b6d063df90ccc58a&query=burger&number=4&addRecipeInformation=true
-
-// Este anda - sin paginacion
-// const getRecipes = async (recipe) => {
-//   const request = await axios.get(
-//     `${baseUrl2}?apiKey=${apiKey}&query=${recipe}&number=4&addRecipeInformation=true`
-//   );
-//   return request;
-// };
-
 // paginacion
 const getRecipes = async (recipe, page = 0, number = 6) => {
   // console.log('page y number', page, ' - ', number)

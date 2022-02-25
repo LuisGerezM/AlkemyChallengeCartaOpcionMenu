@@ -1,7 +1,7 @@
 import MessageAlert from "components/alerts/MessageAlert";
 import { ErrorMessage } from "formik";
 import React from "react";
-import { Col, Form, FormControl } from "react-bootstrap";
+import { Col, FormControl } from "react-bootstrap";
 
 const FormControlInput = ({
   name,
@@ -19,7 +19,7 @@ const FormControlInput = ({
           name={name}
           type="search"
           placeholder={placeholder}
-          className=""
+          className="form-search"
           aria-label={type === "search" ? "Search" : ""}
           value={values.search}
           onChange={handleChange}

@@ -1,11 +1,11 @@
 import MenuContext from "context/menuContext";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { useButtonsPages } from "../../hooks/useButtonsPages";
 
 const ToggleBtnGroup = ({ handleToggleBtnClick }) => {
   // const [btnsActionsValue, setBtnsActionsValue] = useState("1");
-  const {btnsActionsValue, setBtnsActionsValue} = useContext(MenuContext)
+  const { btnsActionsValue, setBtnsActionsValue } = useContext(MenuContext);
   const buttonsActions = useButtonsPages();
 
   return (

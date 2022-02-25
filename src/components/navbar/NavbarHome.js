@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import { navDropdownImage } from "./image/navDropdownImage";
 import Swal from "sweetalert2";
-import { sweetAlertConfirm } from "../../helper/sweetAlerts/sweetAlertsConfirm";
+import { sweetAlertConfirmSaveToken } from "../../helper/sweetAlerts/sweetAlertConfirmSaveToken";
 import { useNavigate } from "react-router-dom";
 import AuthUserContext from "../../context/userContext";
 import "./style.css";
@@ -19,7 +19,7 @@ import SidebarButton from "../sidebar/SidebarButton";
 const NavbarHome = () => {
   const { readToken } = useContext(AuthUserContext);
   const logOut = () => {
-    sweetAlertConfirm(readToken);
+    sweetAlertConfirmSaveToken(readToken);
   };
 
   return (

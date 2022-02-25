@@ -3,7 +3,7 @@ import MenuContext from "context/menuContext";
 import CustomButton from "./CustomButton";
 
 const SeeMoreResult = () => {
-  const { page, setPage, disabledButtonMoreRecipes } = useContext(MenuContext);
+  const { setPage, disabledButtonMoreRecipes } = useContext(MenuContext);
 
   const handlerMoreResult = () => {
     // console.log('entrando a handle more result')
