@@ -6,9 +6,9 @@ import MenuContext from ".";
 import methodsApi from "../../server/axios";
 import { updateInformationMenu } from "helper/menuProvider/informationMenu";
 import { sweetAlertConfirmSaveToken } from "helper/sweetAlerts/sweetAlertConfirmMsg";
-
-// despues sacar esto a blobales; este es para que la suma de los platos veganos y los no veganos, si nos dan 4, entonces está en el limite. NO puede agregar más; vada vez que cambie uno de esos 2 vamos a usar un effect, y si las suma de ambos da 4, DESHABILITAMOS el bot´ton de agregar
-const MAX_LIMIT_PLATOS = 4;
+import addRecipe from "helper/menuProvider/addRecipe";
+import showRecipe from "helper/menuProvider/showRecipe";
+import searchRecipe from "helper/menuProvider/searchRecipe";
 
 const MenuProvider = ({ children }) => {
   // ////// states seccion lista //////
@@ -78,19 +78,8 @@ const MenuProvider = ({ children }) => {
 
   // ----- primeras busquedas -----
   const fetchRecipes = async (recipe) => {
-    try {
-      const fetch = await methodsApi.getRecipes(recipe);
-
-      if (fetch.status === 200) return fetch.data;
-      console.log("llega al throw");
-      throw new Error("Vaya ocurrió un error inesperado");
-    } catch (error) {
-      console.log("error en cath fetchRecipes", error);
-      sweetAlertMsg("error", `${error}`, "Atención");
-      // return { error };
-    } finally {
-      setLoadingSearchFood(false);
-    }
+    //setLoadingSearchFood
+    return searchRecipe(recipe, setLoadingSearchFood);
   };
   // ----- fin primeras busquedas -----
 
@@ -159,68 +148,20 @@ const MenuProvider = ({ children }) => {
 
   // --> Agregar una receta en BUSCADOR-platos o DETALLES-plato
   const handlerAddItem = (item) => {
-    /* 
-platosSelected  setPlatosSelected
-platosVeganoSeleccionado  setPlatosVeganoSeleccionado
-platosOtrasDietas  setPlatosOtrasDietas
-*/
     // console.log("item", item);
-
-    // // maximo 4 platos en el menu --> hecho en un effecto
-    // if (platosSelected.length === 4) {
-    //   // deshabilitamos el BOTON agregar cuándo sea 4 ya
-    //   setStateBtnAdd(true);
-    //   sweetAlertMsg(
-    //     "error",
-    //     "Ya tienes tu menu con 4 comidas 😁",
-    //     "Atención"
-    //   );
-    //   return;
-    // }
-
-    if (item.vegan) {
-      // es vegano
-      if (platosVeganoSeleccionado === 2)
-        return sweetAlertMsg(
-          "error",
-          "Ya tienes tu menu con 2 comidas veganas 😁",
-          "Atención"
-        );
-
-      setPlatosSelected((prevPlatosSelected) =>
-        prevPlatosSelected.concat(item)
-      );
-      setPlatosVeganoSeleccionado(
-        (prevPlatoVeganoSel) => prevPlatoVeganoSel + 1
-      );
-      sweetAlertMsg(
-        "success",
-        "Plato agregado correctamente - dieta vegana",
-        "Felicitaciones"
-      );
-    } else {
-      if (platosOtrasDietas === 2)
-        return sweetAlertMsg(
-          "error",
-          "Ya tienes tu menu con 2 comidas no veganas 😁",
-          "Atención"
-        );
-
-      setPlatosSelected((prevPlatosSelected) =>
-        prevPlatosSelected.concat(item)
-      );
-      setPlatosOtrasDietas((prevPlatoOtraDieta) => prevPlatoOtraDieta + 1);
-      sweetAlertMsg(
-        "success",
-        "Plato agregado correctamente",
-        "Felicitaciones"
-      );
-    }
+    addRecipe(
+      item,
+      setPlatosVeganoSeleccionado,
+      setPlatosSelected,
+      setPlatosOtrasDietas,
+      platosVeganoSeleccionado,
+      platosOtrasDietas
+    );
   };
 
   useEffect(() => {
     // maximo 4 platos en el menu --> hecho en un effecto
-    console.log("platosSelected CAMBIOOO", platosSelected);
+    // console.log("platosSelected CAMBIOOO", platosSelected);
 
     if (platosSelected.length === 4) {
       // deshabilitamos el BOTON agregar cuándo sea 4 ya
@@ -245,7 +186,7 @@ platosOtrasDietas  setPlatosOtrasDietas
     setInfoScoreMenu(updateInformationMenu(platosSelected));
 
     return () => {
-      console.log("desmontando efecto MenuProvider - platosSelected");
+      // console.log("desmontando efecto MenuProvider - platosSelected");
     };
   }, [platosSelected]);
 
@@ -253,18 +194,22 @@ platosOtrasDietas  setPlatosOtrasDietas
   // --> Ver detalle receta en LISTA y BUSCADOR platos
   const handlerShowItem = (item, from) => {
     // from indica desde dónde lo estamos llamando al show; si es desde buscador o lista para renderizar el boton de add o de eliminar
-    console.log("from", from);
-    from === "lista" ? setActionBtnDetails(1) : setActionBtnDetails(2);
+    // console.log("from", from);
+    showRecipe(
+      item,
+      from,
+      setActionBtnDetails,
+      setBtnsActionsValue,
+      setLoadingSelectedDetails,
+      setIdRecipeSelected,
+      handleToggleBtnClick
+    );
 
-    console.log("item", item);
-
-    setBtnsActionsValue("3"); // con esto hacemos que NO esté seleccionado ningun boton del toogle
-    console.log("item", item);
-
-    const { id } = item;
-    setLoadingSelectedDetails(true);
-    setIdRecipeSelected(id);
-    handleToggleBtnClick({ page: "detalles-plato" });
+    /*setActionBtnDetails
+setBtnsActionsValue
+setLoadingSelectedDetails
+setIdRecipeSelected
+handleToggleBtnClick */
   };
 
   // efecto para cuándo se elimine una receta dese page detalles - se redirecciona a lista-platos

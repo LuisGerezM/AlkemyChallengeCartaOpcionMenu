@@ -11,7 +11,7 @@ const ListaPlatos = () => {
   const { platosSelected, loadingList, setLoadingList, infoScoreMenu } =
     useContext(MenuContext);
 
-  console.log("platosSelected ListaPlatos.js", platosSelected);
+  // console.log("platosSelected ListaPlatos.js", platosSelected);
 
   // useEffect(() => {
   //   first
