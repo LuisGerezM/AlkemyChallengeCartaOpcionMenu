@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MenuContext from ".";
 import methodsApi from "../../server/axios";
 import { updateInformationMenu } from "helper/menuProvider/informationMenu";
+import { sweetAlertConfirmSaveToken } from "helper/sweetAlerts/sweetAlertConfirmMsg";
 
 // despues sacar esto a blobales; este es para que la suma de los platos veganos y los no veganos, si nos dan 4, entonces está en el limite. NO puede agregar más; vada vez que cambie uno de esos 2 vamos a usar un effect, y si las suma de ambos da 4, DESHABILITAMOS el bot´ton de agregar
 const MAX_LIMIT_PLATOS = 4;
@@ -12,8 +13,8 @@ const MAX_LIMIT_PLATOS = 4;
 const MenuProvider = ({ children }) => {
   // ////// states seccion lista //////
 
-  // score MENU recetas en lista-platos 
-  const [infoScoreMenu, setInfoScoreMenu] = useState({})
+  // score MENU recetas en lista-platos
+  const [infoScoreMenu, setInfoScoreMenu] = useState({});
 
   // platos seleccionado por usuario <= 4
   const [platosSelected, setPlatosSelected] = useState([]);
@@ -47,6 +48,9 @@ const MenuProvider = ({ children }) => {
   const [detailsRecipeSelected, setDetailsRecipeSelected] = useState(null);
   const [loadingSelectedDetails, setLoadingSelectedDetails] = useState(false);
   const [idRecipeSelected, setIdRecipeSelected] = useState(null);
+
+  // estado usado para cuándo se confirme que se eliminó una recetea desde page detalle
+  const [confirmDeleteRecipe, setConfirmDeleteRecipe] = useState(false);
 
   // ////// fin states seccion detalles //////
 
@@ -160,7 +164,7 @@ platosSelected  setPlatosSelected
 platosVeganoSeleccionado  setPlatosVeganoSeleccionado
 platosOtrasDietas  setPlatosOtrasDietas
 */
-    console.log("item", item);
+    // console.log("item", item);
 
     // // maximo 4 platos en el menu --> hecho en un effecto
     // if (platosSelected.length === 4) {
@@ -212,17 +216,6 @@ platosOtrasDietas  setPlatosOtrasDietas
         "Felicitaciones"
       );
     }
-
-    // 0 CONTROLAR que la acumulacion total de platos NO sea 4.
-    // si NO es 4
-    // 1 controlar si es plato vegano
-    //  1.1 si es plato vegano, ver que no hayan 2 ya
-    //    1.1.1 si no hay 2, sumarlo,
-    //    1.1.2 sino mostrar un mensaje de error
-    // 2 si no es plato vegano
-    //   2.1 ver que no hayan 2 del otro
-    //    2.1.1 si no hay, sumarlo
-    //    2.1.2 si es que hay 2 del otro dar error
   };
 
   useEffect(() => {
@@ -237,12 +230,20 @@ platosOtrasDietas  setPlatosOtrasDietas
         "Ya tienes tu menu con 4 comidas 😁",
         "Felicitaciones"
       );
+      setResultSearch([]);
+      navigate("lista-platos");
     }
 
+    if (platosSelected.length === 0) {
+      // habilitamos el BOTON agregar cuándo sea 4 ya
+      setStateBtnAdd(false);
+      setResultSearch([]);
+    }
+    setStateBtnAdd(false);
+
     // trabajamos la información del menu total
-    setInfoScoreMenu(updateInformationMenu(platosSelected))
-    
-    
+    setInfoScoreMenu(updateInformationMenu(platosSelected));
+
     return () => {
       console.log("desmontando efecto MenuProvider - platosSelected");
     };
@@ -265,6 +266,18 @@ platosOtrasDietas  setPlatosOtrasDietas
     setIdRecipeSelected(id);
     handleToggleBtnClick({ page: "detalles-plato" });
   };
+
+  // efecto para cuándo se elimine una receta dese page detalles - se redirecciona a lista-platos
+  useEffect(() => {
+    if (confirmDeleteRecipe) {
+      navigate("lista-platos");
+      setConfirmDeleteRecipe(false);
+    }
+
+    return () => {
+      console.log("desmontando efecto de confirmDeleteRecipe en MenuProvider");
+    };
+  }, [confirmDeleteRecipe]);
 
   // --- busqueda de receta por id --//
   useEffect(() => {
@@ -316,9 +329,23 @@ platosOtrasDietas  setPlatosOtrasDietas
   // ----- score MENU recetas en lista-platos -----
 
   // ----- Eliminar receta en lista-platos -----
-  const handlerDeleteItem = (item) => {
-    console.log("delete");
-    console.log("item", item);
+
+  const handlerDeleteItem = (item, from) => {
+    sweetAlertConfirmSaveToken(
+      "Estás seguro que deseas eliminar esta receta del Menu?",
+      "question",
+      "Elminar",
+      "Cancelar",
+      "Receta eliminada correctamente",
+      "Esta receta seguirá estando en tu menu",
+      item,
+      platosSelected,
+      setPlatosSelected,
+      from,
+      setConfirmDeleteRecipe,
+      setPlatosVeganoSeleccionado,
+      setPlatosOtrasDietas
+    );
   };
 
   // ////// fin seccion lista-plato  //////
@@ -351,7 +378,7 @@ platosOtrasDietas  setPlatosOtrasDietas
         detailsRecipeSelected,
         stateBtnAdd,
         actionBtnDetails,
-        infoScoreMenu
+        infoScoreMenu,
       }}
     >
       {children}

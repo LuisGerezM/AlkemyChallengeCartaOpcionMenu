@@ -6,7 +6,7 @@ import ActionsItemCard from "./ActionsItemCard";
 import "./style.css";
 
 const ItemList = ({ item, from }) => {
-  console.log('from item list', from)
+  // console.log('from item list', from)
   // console.log("item", item);
   const { title, image, summary, pricePerServing, servings } = item;
   // console.log("summary", summary);

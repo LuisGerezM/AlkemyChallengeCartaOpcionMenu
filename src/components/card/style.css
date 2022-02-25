@@ -5,8 +5,19 @@
   overflow: hidden;
 } */
 
+
+/* caracteristica en items (cards) */
 .item-caract {
   height: 180px !important;
+}
+
+
+/* ScoreAverageAndAcumulations */
+.info:hover {
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(230, 17%, 14%);
+  cursor: pointer;
+  border-radius: 1rem;
 }
 
 /* md ... */
@@ -14,11 +25,32 @@
   .card {
     width: 75%;
   }
+
+  .card-info{
+    width: 100%;
+  }
 }
 
-/* md ... */
+/* lg + ... */
 @media screen and (min-width: 991px) {
   .card {
     width: 50%;
   }
+
+  .card-info{
+    width: 90%
+  }
 }
+
+/*
+
+  --bg: hsl(0, 0%, 100%);
+  --bg-top-color: hsl(225, 100%, 98%);
+  --card-bg: hsl(227, 47%, 96%);
+  --primary-color-text: hsl(228, 12%, 44%);
+  --secondary-color-text: hsl(230, 17%, 14%);
+  --form-check-input: hsl(230, 22%, 74%);
+
+  --color-text-over: hsl(230, 17%, 14%);
+  --dark-mode-color: hsl(228, 12%, 44%);
+*/

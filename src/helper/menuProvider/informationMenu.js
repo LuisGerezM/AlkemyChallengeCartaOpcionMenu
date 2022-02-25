@@ -7,7 +7,7 @@ function informationInteres(platos, firstAttribute, secondAttribute = null) {
   }, 0);
 
   return secondAttribute
-    ? parseInt(preparationMinutes.toFixed(2))
+    ? parseFloat(preparationMinutes.toFixed(2))
     : parseInt(preparationMinutes);
 }
 

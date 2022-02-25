@@ -6,14 +6,15 @@ import ActionsItemCard from "./ActionsItemCard";
 import NoPhoto from "assets/img/no-fotos.png";
 import "./style.css";
 
-const DetailItemSelected = () => {
+const DetailItemSelected = ({from}) => {
   const {
     handlerAddItem,
     loadingSelectedDetails,
     detailsRecipeSelected,
     actionBtnDetails,
+    handlerDeleteItem
   } = useContext(MenuContext);
-
+console.log('from en detailItemSelected', from)
   if (loadingSelectedDetails) return <SkeletonLoadingDetailsRecipe />;
 
   // diets es array
@@ -111,8 +112,10 @@ const DetailItemSelected = () => {
       <ListGroup.Item>
         <ActionsItemCard
           handlerAddItem={handlerAddItem}
+          handlerDeleteItem={handlerDeleteItem}
           item={detailsRecipeSelected}
           actionBtnDetails={actionBtnDetails}
+          from={from}
         />
       </ListGroup.Item>
     </Card>

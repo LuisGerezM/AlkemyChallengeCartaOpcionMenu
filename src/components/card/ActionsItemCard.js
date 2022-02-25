@@ -11,7 +11,7 @@ const ActionsItemCard = ({
   item,
   from,
 }) => {
-  console.log('from en actions item card', from)
+  // console.log('from en actions item card', from, item, handlerDeleteItem)
   const { stateBtnAdd, actionBtnDetails } = useContext(MenuContext);
 
   const params = useLocation(); // obtengo un obj con eltos. y uno d estos es pathname: "/buscador-platos"
@@ -60,6 +60,7 @@ const ActionsItemCard = ({
             msg="Eliminar"
             item={item}
             section={params.pathname === "/detalles-plato" && "w-50"}
+            from={from}
           />
         )}
       </Col>

@@ -5,14 +5,38 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
   const { accumulatePriceMenu, averagePrepTime, averageHealtScore } =
     infoScoreMenu;
   return (
-    <Card bg="secondary" text="white" style={{ width: "90%" }} className="mt-2">
-      <Card.Header className="fw-bolder">Información del menú:</Card.Header>
-      <Card.Body>
-        <Row>
-          <Col sm={3}><span className="fw-bolder">Precio menu:</span> ${accumulatePriceMenu}.</Col>
-          <Col><span className="fw-bolder">Tiempo promedio preparación del menu:</span> {averagePrepTime} Min.</Col>
-          <Col><span className="fw-bolder">promedio 'healt score':</span> {averageHealtScore}</Col>
-        </Row>
+    <Card bg="secondary card-info" text="white" className="mt-2">
+      <Card.Header className="fw-bolder text-sm-start text-md-center">
+        Información del menú:
+      </Card.Header>
+      <Card.Body className="d-flex flex-row flex-wrap">
+        <Col
+          sm={12}
+          md={3}
+          className="fw-bolder info text-sm-start text-md-center px-2 py-1"
+        >
+          <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Precio
+          menu: ${accumulatePriceMenu}
+        </Col>
+
+        <Col
+          className="fw-bolder info text-sm-start text-md-center px-2 py-1"
+          sm={12}
+          md={4}
+          lg={5}
+        >
+          <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Tiempo
+          promedio preparación menu: {averagePrepTime} Min
+        </Col>
+        <Col
+          className="fw-bolder info text-sm-start text-md-center px-2 py-1"
+          sm={12}
+          md={4}
+          lg={4}
+        >
+          <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Promedio
+          puntuación de salud: {averageHealtScore}
+        </Col>
       </Card.Body>
     </Card>
   );

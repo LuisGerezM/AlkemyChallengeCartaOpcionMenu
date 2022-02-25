@@ -19,7 +19,7 @@ const FormControlInput = ({
           name={name}
           type="search"
           placeholder={placeholder}
-          className=""
+          className="form-search"
           aria-label={type === "search" ? "Search" : ""}
           value={values.search}
           onChange={handleChange}

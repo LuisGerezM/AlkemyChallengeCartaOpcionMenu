@@ -99,7 +99,7 @@ const BuscadorPlatos = () => {
           <MessageAlert
             message="Busca tu receta favorita"
             color={"info"}
-            heading="Atención!!!"
+            heading="Bienvenido!!!"
           />
         )
       )}

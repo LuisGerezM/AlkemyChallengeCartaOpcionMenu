@@ -5,6 +5,7 @@ import MenuContext from "../../../context/menuContext";
 import { sweetAlertMsg } from "../../../helper/sweetAlerts/sweetAlertMsg";
 import CustomButton from "../../button/CustomButton";
 import FormControlInput from "../FormControlInput";
+import '../styles.css'
 
 const FormSearch = () => {
   const {
