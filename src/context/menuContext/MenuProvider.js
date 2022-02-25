@@ -220,7 +220,7 @@ handleToggleBtnClick */
     }
 
     return () => {
-      console.log("desmontando efecto de confirmDeleteRecipe en MenuProvider");
+      // console.log("desmontando efecto de confirmDeleteRecipe en MenuProvider");
     };
   }, [confirmDeleteRecipe]);
 
@@ -238,14 +238,14 @@ handleToggleBtnClick */
           if (fetch.data === [])
             throw new Error(`Vaya ocurrió un error al buscar la receta`);
 
-          console.log("fetch.data en effect");
+          // console.log("fetch.data en effect");
           setDetailsRecipeSelected(fetch.data);
           // handleToggleBtnClick({ page: "detalles-plato" }); // redirección
         } else {
           throw new Error(`Vaya ocurrió un error inesperado ${fetch.status}`);
         }
       } catch (error) {
-        console.log("error en cath add page", error);
+        // console.log("error en cath add page", error);
         sweetAlertMsg("error", `${error}`, "Atención");
         handleToggleBtnClick({ page: "buscador-plato" });
       } finally {
@@ -259,7 +259,7 @@ handleToggleBtnClick */
 
     return () => {
       // aqui cuando se desmonta creo que deberia poner en null d nuevo el setIdRecipeSelected(null) ;; VER Si es que es aqui o cuando hace una nueva busqueda ponerlo en null para q no entre a este if por haber guardado el valor antiguo ;;; ver porque quiza si esto se desmonta cunado cambio a detalles-plato, entonces puede ser que pierda el id y si en detalles plato quiero agregarlo no voy a poder
-      console.log("desmontando efect de menuProvider - idRecperSelected");
+      // console.log("desmontando efect de menuProvider - idRecperSelected");
     };
   }, [idRecipeSelected]);
 

@@ -14,7 +14,7 @@ const DetailItemSelected = ({from}) => {
     actionBtnDetails,
     handlerDeleteItem
   } = useContext(MenuContext);
-console.log('from en detailItemSelected', from)
+// console.log('from en detailItemSelected', from)
   if (loadingSelectedDetails) return <SkeletonLoadingDetailsRecipe />;
 
   // diets es array
