@@ -17,7 +17,7 @@ const UserProvider = ({ children }) => {
     }
   }, []);
 
-  // funcion para leer el token de inicio
+  // funcion para leer el token de inicio 
   const readToken = (dataUser) => {
     // console.log("dataUser", dataUser);
     setTokenUser(dataUser.token);

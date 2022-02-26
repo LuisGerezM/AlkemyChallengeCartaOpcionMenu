@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import NotFound from "views/NotFound";
 import "./App.css";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import MenuProvider from "./context/menuContext/MenuProvider";
@@ -25,12 +26,12 @@ function App() {
             <Route path="lista-platos" element={<ListaPlatos />} />
             <Route path="detalles-plato" element={<DetallePlato />} />
             <Route path="buscador-platos" element={<BuscadorPlatos />} />
-
-            {/* VER SI DEJAMOS eSTE ULTIMO  */}
+            {/* funciona esto, redirige al login, pero l osaco para que me mande al 404 */}
             {/* <Route path="*" element={<Login />} /> */}
           </Route>
           <Route path="/login" element={<Login />} />
-          <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/not-found" />} />
         </Routes>
       </MenuProvider>
     </UserProvider>

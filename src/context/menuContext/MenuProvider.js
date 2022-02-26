@@ -173,7 +173,17 @@ const MenuProvider = ({ children }) => {
         "Felicitaciones"
       );
       setResultSearch([]);
-      navigate("lista-platos");
+      // navigate("lista-platos");
+      handleToggleBtnClick({page:"lista-platos"})
+      /*
+ const handleToggleBtnClick = (element) => {
+    // console.log(element);
+    const { page } = element;
+    // console.log("page in handle toogle btn click", page);
+    //setClickToggleBtn(value);
+    navigate(page);
+  };
+      */
     }
 
     if (platosSelected.length === 0) {
