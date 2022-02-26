@@ -173,8 +173,9 @@ const MenuProvider = ({ children }) => {
         "Felicitaciones"
       );
       setResultSearch([]);
-      // navigate("lista-platos");
-      handleToggleBtnClick({page:"lista-platos"})
+      setBtnsActionsValue("1");
+      navigate("lista-platos");
+      // handleToggleBtnClick({ page: "lista-platos" });
       /*
  const handleToggleBtnClick = (element) => {
     // console.log(element);
@@ -199,6 +200,8 @@ const MenuProvider = ({ children }) => {
     return () => {
       // console.log("desmontando efecto MenuProvider - platosSelected");
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [platosSelected]);
 
   // PRUEBASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS: Cauliflower y hamburger
@@ -215,12 +218,6 @@ const MenuProvider = ({ children }) => {
       setIdRecipeSelected,
       handleToggleBtnClick
     );
-
-    /*setActionBtnDetails
-setBtnsActionsValue
-setLoadingSelectedDetails
-setIdRecipeSelected
-handleToggleBtnClick */
   };
 
   // efecto para cuándo se elimine una receta dese page detalles - se redirecciona a lista-platos
@@ -233,6 +230,8 @@ handleToggleBtnClick */
     return () => {
       // console.log("desmontando efecto de confirmDeleteRecipe en MenuProvider");
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [confirmDeleteRecipe]);
 
   // --- busqueda de receta por id --//
@@ -272,6 +271,8 @@ handleToggleBtnClick */
       // aqui cuando se desmonta creo que deberia poner en null d nuevo el setIdRecipeSelected(null) ;; VER Si es que es aqui o cuando hace una nueva busqueda ponerlo en null para q no entre a este if por haber guardado el valor antiguo ;;; ver porque quiza si esto se desmonta cunado cambio a detalles-plato, entonces puede ser que pierda el id y si en detalles plato quiero agregarlo no voy a poder
       // console.log("desmontando efect de menuProvider - idRecperSelected");
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idRecipeSelected]);
 
   // ---------- fin Acciones items receta (cards) ---------
