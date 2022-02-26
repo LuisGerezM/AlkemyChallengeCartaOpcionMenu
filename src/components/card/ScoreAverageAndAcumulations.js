@@ -6,7 +6,7 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
     infoScoreMenu;
   return (
     <Card bg="secondary card-info" text="white" className="mt-2">
-      <Card.Header className="fw-bolder text-sm-start text-md-center bg-success">
+      <Card.Header className="fw-bolder text-sm-start text-md-center bg-light text-success">
         Información del menú:
       </Card.Header>
       <Card.Body className="d-flex flex-row flex-wrap bg-primary">
@@ -25,8 +25,7 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
           md={4}
           lg={5}
         >
-          <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Tiempo
-          promedio preparación menu: {averagePrepTime} Min
+          <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Tiempo preparación menu: {averagePrepTime} Min
         </Col>
         <Col
           className="fw-bolder info text-sm-start text-md-center px-2 py-1"
@@ -35,7 +34,7 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
           lg={4}
         >
           <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Promedio
-          healt score: {averageHealtScore}
+          healt score: {averageHealtScore} pts.
         </Col>
       </Card.Body>
     </Card>

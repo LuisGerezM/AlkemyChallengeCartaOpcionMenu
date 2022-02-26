@@ -36,7 +36,7 @@ const ListaPlatos = () => {
       <Row className="mt-2 mb-5 d-flex justify-content-center">
         {platosSelected.length !== 0 && (
           <Col className="d-flex justify-content-center" sm={12}>
-            <ScoreAverageAndAcumulations infoScoreMenu={infoScoreMenu}/>
+            <ScoreAverageAndAcumulations infoScoreMenu={infoScoreMenu} />
           </Col>
         )}
 

@@ -8,7 +8,7 @@ function addRecipe(
   platosVeganoSeleccionado,
   platosOtrasDietas
 ) {
- 
+  // console.log(item);
   if (item.vegan) {
     // es vegano
     if (platosVeganoSeleccionado === 2)
@@ -18,11 +18,14 @@ function addRecipe(
         "Atención"
       );
 
-    setPlatosSelected((platosVeganoSeleccionado) => [...platosVeganoSeleccionado, item]);
+    setPlatosSelected((platosVeganoSeleccionado) => [
+      ...platosVeganoSeleccionado,
+      item,
+    ]);
     setPlatosVeganoSeleccionado((prevPlatoVeganoSel) => prevPlatoVeganoSel + 1);
     sweetAlertMsg(
       "success",
-      "Plato agregado correctamente - dieta vegana",
+      `Plato ${item.title} agregado correctamente - Plato dieta vegana`,
       "Felicitaciones"
     );
   } else {
@@ -35,7 +38,11 @@ function addRecipe(
 
     setPlatosSelected((prevPlatosSelected) => prevPlatosSelected.concat(item));
     setPlatosOtrasDietas((prevPlatoOtraDieta) => prevPlatoOtraDieta + 1);
-    sweetAlertMsg("success", "Plato agregado correctamente", "Felicitaciones");
+    sweetAlertMsg(
+      "success",
+      `Plato ${item.title} agregado correctamente`,
+      "Felicitaciones"
+    );
   }
 }
 

@@ -71,6 +71,8 @@ const FormSearch = () => {
       onSubmit={async (valueSubmit, { resetForm }) => {
         resetForm();
 
+        // elimino resultados anteriores
+        setResultSearch([]);
         // reiniciamos pagina inicial
         // console.log("INITIAL_PAGE en formSearch", INITIAL_PAGE);
         setPage(INITIAL_PAGE);
@@ -89,7 +91,6 @@ const FormSearch = () => {
             "No existe esa receta, quiza escribiste mal",
             "Atención"
           );
-          setResultSearch([]);
 
           // } else if (fetch.results.length === 0) {
           //   sweetAlertMsg("info", "No hay más recetas", "Atención");

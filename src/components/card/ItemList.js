@@ -1,17 +1,27 @@
 import React, { useContext } from "react";
 import MenuContext from "context/menuContext";
-import useShortenSummary from "hooks/useShortenSummary";
 import { Card, Image, ListGroup } from "react-bootstrap";
 import ActionsItemCard from "./ActionsItemCard";
 import "./style.css";
+import SummaryRecipe from "components/summaryRecipe/SummaryRecipe";
 
 const ItemList = ({ item, from }) => {
   // console.log('from item list', from)
   // console.log("item", item);
-  const { title, image, summary, pricePerServing, servings } = item;
+  const {
+    title,
+    image,
+    summary,
+    pricePerServing,
+    servings,
+    vegan,
+    readyInMinutes,
+    healthScore,
+  } = item;
   // console.log("summary", summary);
   // acorta texto .. dejando con ... despues de unas cuántas palabras
-  const content = useShortenSummary(summary);
+  //const content = useShortenSummary(summary);
+
   const {
     //handleToggleBtnClick,
     handlerAddItem,
@@ -27,28 +37,28 @@ const ItemList = ({ item, from }) => {
         <ListGroup.Item>
           <Image className="w-100 col col-sm-12" src={image} />
         </ListGroup.Item>
-        <ListGroup.Item className="item-caract">
-          {" "}
-          <Card.Subtitle className="mb-2 text-muted">
-            Caracteristicas del plato:
-          </Card.Subtitle>
+        <ListGroup.Item>
           {/* <p dangerouslySetInnerHTML={{ __html: summary }} /> */}
-          <div
-            dangerouslySetInnerHTML={{
-              __html: `${content.phrasesContentShow}.`,
-            }}
+          <SummaryRecipe
+            title={title}
+            content={summary}
+            vegan={vegan}
+            readyInMinutes={readyInMinutes}
+            healthScore={healthScore}
           />
-          <div
+          {/* <div
             className="text-truncate"
             dangerouslySetInnerHTML={{ __html: content.latestPharagraph }}
-          />
+          /> */}
         </ListGroup.Item>
-        <ListGroup.Item >
+        <ListGroup.Item>
           {" "}
           <Card.Subtitle className="mb-2 text-muted">
-            Costo del plato:
+            Costo plato por persona:
           </Card.Subtitle>
-            <div className="fw-bolder">${(pricePerServing/servings).toFixed(2)}</div>
+          <div className="fw-bolder">
+            ${(pricePerServing / servings).toFixed(2)}
+          </div>
         </ListGroup.Item>
         <ListGroup.Item>
           <ActionsItemCard
