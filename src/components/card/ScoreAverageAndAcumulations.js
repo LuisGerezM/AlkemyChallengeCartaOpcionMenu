@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 
 const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
   const { accumulatePriceMenu, averagePrepTime, averageHealtScore } =
@@ -25,7 +25,8 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
           md={4}
           lg={5}
         >
-          <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Tiempo preparación menu: {averagePrepTime} Min
+          <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Tiempo
+          preparación menu: {averagePrepTime} Min
         </Col>
         <Col
           className="fw-bolder info text-sm-start text-md-center px-2 py-1"

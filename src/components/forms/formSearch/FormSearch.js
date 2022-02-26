@@ -88,7 +88,7 @@ const FormSearch = () => {
         if (fetch.results.length === 0) {
           sweetAlertMsg(
             "info",
-            "No existe esa receta, quiza escribiste mal",
+            `No encontramos la receta ${search}, quiza escribiste mal`,
             "Atención"
           );
 

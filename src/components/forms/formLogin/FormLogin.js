@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Form, Col, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import AuthUserContext from "../../../context/userContext";
 import CustomButton from "../../button/CustomButton";
 import SpinnerWithMsg from "../../spinner/SpinnerWithMsg";
@@ -73,18 +72,26 @@ const FormLogin = () => {
       // AQUI DISPARAR un sweet alert con el mismo
       // console.log("checkLogin === error", checkLogin);
 
+      !checkLogin && sweetAlertMsg("error", checkLogin.error, "Oops... Error");
+
+
       // error network
-      !checkLogin.error.response && sweetAlertMsg('error', checkLogin.error.message, "Oops... Error");
+      !checkLogin.error.response &&
+        sweetAlertMsg("error", checkLogin.error.message, "Oops... Error");
 
       // other error
-      sweetAlertMsg('error', checkLogin.error.response.data.error, "Oops... Error");
+      sweetAlertMsg(
+        "error",
+        checkLogin.error.response.data.error,
+        "Oops... Error"
+      );
     }
     setLoadingLogin(false);
   };
 
   // challenge@alkemy.org
   // react
-  
+
   return (
     <Form noValidate validated={errorValidated} onSubmit={handleSubmit}>
       <FormGroupInput

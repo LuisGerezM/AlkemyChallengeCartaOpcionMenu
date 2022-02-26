@@ -132,15 +132,15 @@ const MenuProvider = ({ children }) => {
     // CAPA q hay q cambiar esto ... que NO sea con el input search.. aunque pueda ser que NO necesite usar un if aqui.. probar
     // PROBABLEMENTE no haga falta de este IF
     // if (inputSearch) {
-      // const fetchMore = async () => {
-      //   await
-      // }
-      // fetchMore();
-      addPage(inputSearch);
+    // const fetchMore = async () => {
+    //   await
+    // }
+    // fetchMore();
+    addPage(inputSearch);
     // }
 
     return () => {
-      console.log("desmonanto effect de menuProvider - page");
+      // console.log("desmonanto effect de menuProvider - page");
     };
   }, [page, inputSearch]);
   // ----- fin busquedas agregando página -----
