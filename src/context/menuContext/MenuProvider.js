@@ -6,9 +6,9 @@ import MenuContext from ".";
 import methodsApi from "../../server/axios";
 import { updateInformationMenu } from "helper/menuProvider/informationMenu";
 import { sweetAlertConfirmSaveToken } from "helper/sweetAlerts/sweetAlertConfirmMsg";
-
-// despues sacar esto a blobales; este es para que la suma de los platos veganos y los no veganos, si nos dan 4, entonces está en el limite. NO puede agregar más; vada vez que cambie uno de esos 2 vamos a usar un effect, y si las suma de ambos da 4, DESHABILITAMOS el bot´ton de agregar
-const MAX_LIMIT_PLATOS = 4;
+import addRecipe from "helper/menuProvider/addRecipe";
+import showRecipe from "helper/menuProvider/showRecipe";
+import searchRecipe from "helper/menuProvider/searchRecipe";
 
 const MenuProvider = ({ children }) => {
   // ////// states seccion lista //////
@@ -78,19 +78,8 @@ const MenuProvider = ({ children }) => {
 
   // ----- primeras busquedas -----
   const fetchRecipes = async (recipe) => {
-    try {
-      const fetch = await methodsApi.getRecipes(recipe);
-
-      if (fetch.status === 200) return fetch.data;
-      console.log("llega al throw");
-      throw new Error("Vaya ocurrió un error inesperado");
-    } catch (error) {
-      console.log("error en cath fetchRecipes", error);
-      sweetAlertMsg("error", `${error}`, "Atención");
-      // return { error };
-    } finally {
-      setLoadingSearchFood(false);
-    }
+    //setLoadingSearchFood
+    return searchRecipe(recipe, setLoadingSearchFood);
   };
   // ----- fin primeras busquedas -----
 
@@ -141,86 +130,39 @@ const MenuProvider = ({ children }) => {
     // };
 
     // CAPA q hay q cambiar esto ... que NO sea con el input search.. aunque pueda ser que NO necesite usar un if aqui.. probar
-    if (inputSearch) {
-      // const fetchMore = async () => {
-      //   await
-      // }
-      // fetchMore();
-      addPage(inputSearch);
-    }
+    // PROBABLEMENTE no haga falta de este IF
+    // if (inputSearch) {
+    // const fetchMore = async () => {
+    //   await
+    // }
+    // fetchMore();
+    addPage(inputSearch);
+    // }
 
     return () => {
-      console.log("desmonanto effect de menuProvider - page");
+      // console.log("desmonanto effect de menuProvider - page");
     };
-  }, [page]);
+  }, [page, inputSearch]);
   // ----- fin busquedas agregando página -----
 
   // ----- Acciones items receta (cards) BUSCADOR-platos o DETALLES-plato -----
 
   // --> Agregar una receta en BUSCADOR-platos o DETALLES-plato
   const handlerAddItem = (item) => {
-    /* 
-platosSelected  setPlatosSelected
-platosVeganoSeleccionado  setPlatosVeganoSeleccionado
-platosOtrasDietas  setPlatosOtrasDietas
-*/
     // console.log("item", item);
-
-    // // maximo 4 platos en el menu --> hecho en un effecto
-    // if (platosSelected.length === 4) {
-    //   // deshabilitamos el BOTON agregar cuándo sea 4 ya
-    //   setStateBtnAdd(true);
-    //   sweetAlertMsg(
-    //     "error",
-    //     "Ya tienes tu menu con 4 comidas 😁",
-    //     "Atención"
-    //   );
-    //   return;
-    // }
-
-    if (item.vegan) {
-      // es vegano
-      if (platosVeganoSeleccionado === 2)
-        return sweetAlertMsg(
-          "error",
-          "Ya tienes tu menu con 2 comidas veganas 😁",
-          "Atención"
-        );
-
-      setPlatosSelected((prevPlatosSelected) =>
-        prevPlatosSelected.concat(item)
-      );
-      setPlatosVeganoSeleccionado(
-        (prevPlatoVeganoSel) => prevPlatoVeganoSel + 1
-      );
-      sweetAlertMsg(
-        "success",
-        "Plato agregado correctamente - dieta vegana",
-        "Felicitaciones"
-      );
-    } else {
-      if (platosOtrasDietas === 2)
-        return sweetAlertMsg(
-          "error",
-          "Ya tienes tu menu con 2 comidas no veganas 😁",
-          "Atención"
-        );
-
-      setPlatosSelected((prevPlatosSelected) =>
-        prevPlatosSelected.concat(item)
-      );
-      setPlatosOtrasDietas((prevPlatoOtraDieta) => prevPlatoOtraDieta + 1);
-      sweetAlertMsg(
-        "success",
-        "Plato agregado correctamente",
-        "Felicitaciones"
-      );
-    }
+    addRecipe(
+      item,
+      setPlatosVeganoSeleccionado,
+      setPlatosSelected,
+      setPlatosOtrasDietas,
+      platosVeganoSeleccionado,
+      platosOtrasDietas
+    );
   };
 
   useEffect(() => {
     // maximo 4 platos en el menu --> hecho en un effecto
-    console.log("platosSelected CAMBIOOO", platosSelected);
+    // console.log("platosSelected CAMBIOOO", platosSelected);
 
     if (platosSelected.length === 4) {
       // deshabilitamos el BOTON agregar cuándo sea 4 ya
@@ -231,7 +173,18 @@ platosOtrasDietas  setPlatosOtrasDietas
         "Felicitaciones"
       );
       setResultSearch([]);
+      setBtnsActionsValue("1");
       navigate("lista-platos");
+      // handleToggleBtnClick({ page: "lista-platos" });
+      /*
+ const handleToggleBtnClick = (element) => {
+    // console.log(element);
+    const { page } = element;
+    // console.log("page in handle toogle btn click", page);
+    //setClickToggleBtn(value);
+    navigate(page);
+  };
+      */
     }
 
     if (platosSelected.length === 0) {
@@ -245,26 +198,26 @@ platosOtrasDietas  setPlatosOtrasDietas
     setInfoScoreMenu(updateInformationMenu(platosSelected));
 
     return () => {
-      console.log("desmontando efecto MenuProvider - platosSelected");
+      // console.log("desmontando efecto MenuProvider - platosSelected");
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [platosSelected]);
 
   // PRUEBASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS: Cauliflower y hamburger
   // --> Ver detalle receta en LISTA y BUSCADOR platos
   const handlerShowItem = (item, from) => {
     // from indica desde dónde lo estamos llamando al show; si es desde buscador o lista para renderizar el boton de add o de eliminar
-    console.log("from", from);
-    from === "lista" ? setActionBtnDetails(1) : setActionBtnDetails(2);
-
-    console.log("item", item);
-
-    setBtnsActionsValue("3"); // con esto hacemos que NO esté seleccionado ningun boton del toogle
-    console.log("item", item);
-
-    const { id } = item;
-    setLoadingSelectedDetails(true);
-    setIdRecipeSelected(id);
-    handleToggleBtnClick({ page: "detalles-plato" });
+    // console.log("from", from);
+    showRecipe(
+      item,
+      from,
+      setActionBtnDetails,
+      setBtnsActionsValue,
+      setLoadingSelectedDetails,
+      setIdRecipeSelected,
+      handleToggleBtnClick
+    );
   };
 
   // efecto para cuándo se elimine una receta dese page detalles - se redirecciona a lista-platos
@@ -275,8 +228,10 @@ platosOtrasDietas  setPlatosOtrasDietas
     }
 
     return () => {
-      console.log("desmontando efecto de confirmDeleteRecipe en MenuProvider");
+      // console.log("desmontando efecto de confirmDeleteRecipe en MenuProvider");
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [confirmDeleteRecipe]);
 
   // --- busqueda de receta por id --//
@@ -293,14 +248,14 @@ platosOtrasDietas  setPlatosOtrasDietas
           if (fetch.data === [])
             throw new Error(`Vaya ocurrió un error al buscar la receta`);
 
-          console.log("fetch.data en effect");
+          // console.log("fetch.data en effect");
           setDetailsRecipeSelected(fetch.data);
           // handleToggleBtnClick({ page: "detalles-plato" }); // redirección
         } else {
           throw new Error(`Vaya ocurrió un error inesperado ${fetch.status}`);
         }
       } catch (error) {
-        console.log("error en cath add page", error);
+        // console.log("error en cath add page", error);
         sweetAlertMsg("error", `${error}`, "Atención");
         handleToggleBtnClick({ page: "buscador-plato" });
       } finally {
@@ -314,8 +269,10 @@ platosOtrasDietas  setPlatosOtrasDietas
 
     return () => {
       // aqui cuando se desmonta creo que deberia poner en null d nuevo el setIdRecipeSelected(null) ;; VER Si es que es aqui o cuando hace una nueva busqueda ponerlo en null para q no entre a este if por haber guardado el valor antiguo ;;; ver porque quiza si esto se desmonta cunado cambio a detalles-plato, entonces puede ser que pierda el id y si en detalles plato quiero agregarlo no voy a poder
-      console.log("desmontando efect de menuProvider - idRecperSelected");
+      // console.log("desmontando efect de menuProvider - idRecperSelected");
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idRecipeSelected]);
 
   // ---------- fin Acciones items receta (cards) ---------

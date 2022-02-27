@@ -1,19 +1,19 @@
 import React from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 
 const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
   const { accumulatePriceMenu, averagePrepTime, averageHealtScore } =
     infoScoreMenu;
   return (
     <Card bg="secondary card-info" text="white" className="mt-2">
-      <Card.Header className="fw-bolder text-sm-start text-md-center">
+      <Card.Header className="fw-bolder text-sm-start text-md-center bg-light text-success">
         Información del menú:
       </Card.Header>
-      <Card.Body className="d-flex flex-row flex-wrap">
+      <Card.Body className="d-flex flex-row flex-wrap bg-primary">
         <Col
           sm={12}
           md={3}
-          className="fw-bolder info text-sm-start text-md-center px-2 py-1"
+          className="fw-bolder info text-sm-start text-md-center px-2 py-1 "
         >
           <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Precio
           menu: ${accumulatePriceMenu}
@@ -26,7 +26,7 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
           lg={5}
         >
           <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Tiempo
-          promedio preparación menu: {averagePrepTime} Min
+          preparación menu: {averagePrepTime} Min
         </Col>
         <Col
           className="fw-bolder info text-sm-start text-md-center px-2 py-1"
@@ -35,7 +35,7 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
           lg={4}
         >
           <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Promedio
-          puntuación de salud: {averageHealtScore}
+          healt score: {averageHealtScore} pts.
         </Col>
       </Card.Body>
     </Card>

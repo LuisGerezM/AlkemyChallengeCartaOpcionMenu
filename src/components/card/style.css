@@ -5,12 +5,10 @@
   overflow: hidden;
 } */
 
-
 /* caracteristica en items (cards) */
-.item-caract {
+/* .item-caract {
   height: 180px !important;
-}
-
+} */
 
 /* ScoreAverageAndAcumulations */
 .info:hover {
@@ -26,7 +24,7 @@
     width: 75%;
   }
 
-  .card-info{
+  .card-info {
     width: 100%;
   }
 }
@@ -37,8 +35,8 @@
     width: 50%;
   }
 
-  .card-info{
-    width: 90%
+  .card-info {
+    width: 90%;
   }
 }
 

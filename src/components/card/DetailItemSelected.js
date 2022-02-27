@@ -5,16 +5,17 @@ import { Card, ListGroup, ListGroupItem, Image } from "react-bootstrap";
 import ActionsItemCard from "./ActionsItemCard";
 import NoPhoto from "assets/img/no-fotos.png";
 import "./style.css";
+import SummaryRecipe from "components/summaryRecipe/SummaryRecipe";
 
-const DetailItemSelected = ({from}) => {
+const DetailItemSelected = ({ from }) => {
   const {
     handlerAddItem,
     loadingSelectedDetails,
     detailsRecipeSelected,
     actionBtnDetails,
-    handlerDeleteItem
+    handlerDeleteItem,
   } = useContext(MenuContext);
-console.log('from en detailItemSelected', from)
+  // console.log('from en detailItemSelected', from)
   if (loadingSelectedDetails) return <SkeletonLoadingDetailsRecipe />;
 
   // diets es array
@@ -26,6 +27,9 @@ console.log('from en detailItemSelected', from)
     extendedIngredients,
     pricePerServing,
     servings,
+    vegan,
+    readyInMinutes,
+    healthScore,
   } = detailsRecipeSelected;
 
   // console.log("image --> ", image);
@@ -72,16 +76,13 @@ console.log('from en detailItemSelected', from)
           </ListGroupItem>
         </ListGroupItem>
         <ListGroupItem>
-          <Card.Subtitle className="mb-2 text-muted">
-            Caracteristicas del plato:{" "}
-          </Card.Subtitle>
-          <ListGroupItem>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: summary,
-              }}
-            />
-          </ListGroupItem>
+          <SummaryRecipe
+            title={title}
+            content={summary}
+            vegan={vegan}
+            readyInMinutes={readyInMinutes}
+            healthScore={healthScore}
+          />
         </ListGroupItem>
 
         {/* <ListGroupItem>Vestibulum at eros</ListGroupItem> */}

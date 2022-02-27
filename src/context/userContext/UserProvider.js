@@ -17,7 +17,7 @@ const UserProvider = ({ children }) => {
     }
   }, []);
 
-  // funcion para leer el token de inicio
+  // funcion para leer el token de inicio 
   const readToken = (dataUser) => {
     // console.log("dataUser", dataUser);
     setTokenUser(dataUser.token);
@@ -28,7 +28,7 @@ const UserProvider = ({ children }) => {
     // console.log('user2', user)
     try {
       const fetchUser = await methodsApi.getUser(user);
-      //console.log("fetchUser user provier", fetchUser);
+      // console.log("fetchUser user provier", fetchUser);
 
       if (fetchUser.status === 200) return fetchUser.data;
 

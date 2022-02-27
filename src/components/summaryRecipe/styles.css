@@ -1,0 +1,8 @@
+.summary {
+  display: contents !important;
+}
+
+.summary-col:hover {
+  background-color: hsl(230, 90%, 92%) !important;
+  border-radius: 1rem;
+}

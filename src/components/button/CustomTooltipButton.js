@@ -10,7 +10,7 @@ const CustomTooltipButton = ({
   item,
   section = null,
   disabled,
-  from
+  from = null
 }) => {
   return (
     <OverlayTrigger
@@ -32,6 +32,7 @@ const CustomTooltipButton = ({
           {text}
         </Link>
       ) : ( */}
+      {/* section es par el tamaño del btn  */}
       <Button
         className={`${section && section}`}
         variant={variant}

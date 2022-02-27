@@ -67,7 +67,7 @@ const BuscadorPlatos = () => {
                 sm={6}
                 lg={4}
               >
-                <ItemList item={element} from='buscador'/>
+                <ItemList item={element} from="buscador" />
               </Col>
             ))}
 

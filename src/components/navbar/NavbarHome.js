@@ -1,20 +1,9 @@
-import React, { useContext, useState } from "react";
-import {
-  Button,
-  Container,
-  Form,
-  FormControl,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap";
+import React, { useContext } from "react";
+import { Container, Navbar, NavDropdown } from "react-bootstrap";
 import { navDropdownImage } from "./image/navDropdownImage";
-import Swal from "sweetalert2";
 import { sweetAlertConfirmSaveToken } from "../../helper/sweetAlerts/sweetAlertConfirmSaveToken";
-import { useNavigate } from "react-router-dom";
 import AuthUserContext from "../../context/userContext";
 import "./style.css";
-import Sidebar from "../sidebar/SidebarButton";
-import SidebarButton from "../sidebar/SidebarButton";
 
 const NavbarHome = () => {
   const { readToken } = useContext(AuthUserContext);
