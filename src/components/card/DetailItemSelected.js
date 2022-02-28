@@ -15,10 +15,9 @@ const DetailItemSelected = ({ from }) => {
     actionBtnDetails,
     handlerDeleteItem,
   } = useContext(MenuContext);
-  // console.log('from en detailItemSelected', from)
+
   if (loadingSelectedDetails) return <SkeletonLoadingDetailsRecipe />;
 
-  // diets es array
   const {
     diets,
     image,
@@ -32,15 +31,7 @@ const DetailItemSelected = ({ from }) => {
     healthScore,
   } = detailsRecipeSelected;
 
-  // console.log("image --> ", image);
-
-  // console.log(
-  //   "detailsRecipeSelected en detail item selected",
-  //   detailsRecipeSelected
-  // );
-
   return (
-    //   VER SI DJAMOS O SACAMOS EL WIDT Y EL HEIG
     <Card className="mt-3" border="primary">
       <Card.Img
         className="mt-2 mx-auto"
@@ -84,8 +75,6 @@ const DetailItemSelected = ({ from }) => {
             healthScore={healthScore}
           />
         </ListGroupItem>
-
-        {/* <ListGroupItem>Vestibulum at eros</ListGroupItem> */}
       </ListGroup>
       {diets.length !== 0 && (
         <ListGroupItem>

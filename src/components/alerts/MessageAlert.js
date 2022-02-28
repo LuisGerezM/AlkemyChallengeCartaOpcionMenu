@@ -12,8 +12,8 @@ const MessageAlert = ({ message, color, type = null, heading = null }) => {
         </Col>
       ) : (
         <Col sm={12}>
-           <Alert className="mt-5 text-center" variant={color}>
-           <Alert.Heading>{heading}</Alert.Heading>
+          <Alert className="mt-5 text-center" variant={color}>
+            <Alert.Heading>{heading}</Alert.Heading>
             {message}
           </Alert>
         </Col>

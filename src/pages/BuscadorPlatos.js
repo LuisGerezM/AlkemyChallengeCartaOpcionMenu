@@ -8,8 +8,6 @@ import SkeletonLoadingRecipes from "components/skeletonsLoading/SkeletonLoadingR
 import MessageAlert from "components/alerts/MessageAlert";
 
 const BuscadorPlatos = () => {
-  // cuando empiece a escribir mostrar un skeletom ui en vez del loading
-
   const {
     setPage,
     loadingSearchFood,
@@ -17,12 +15,6 @@ const BuscadorPlatos = () => {
     resultSearch,
     setResultSearch,
   } = useContext(MenuContext);
-
-  // const [loadingSearchFood, setLoadingSearchFood] = useState(false);
-
-  // const { loadingSearchFood, setLoadingSearchFood, setPage, inputSearch } =
-  //   usePagination(setResultSearch);
-  // console.log("resultSearch en Buscador Plato", resultSearch);
 
   return (
     <>
@@ -32,33 +24,24 @@ const BuscadorPlatos = () => {
         lg={4}
         className="d-flex justify-content-center mt-3 "
       >
-        {/* hamburger */}
         <FormSearch />
       </Col>
 
       {loadingSearchFood && (
         <Row>
-          {/* ver si esta COL del skeleton sirven para algo, mepa q NO SIRVEN... sacar sino */}
-          {/* <Col className="d-flex justify-content-center" sm={12}> */}{" "}
-          <SkeletonLoadingRecipes /> {/* </Col> */}
+          <SkeletonLoadingRecipes />
         </Row>
       )}
 
       {resultSearch?.length !== 0 ? (
         <>
-          {/* DSPUES VER SI DEJO O NO ESTE BOTON POR Q NO PIDEN EN EL EJERCICIO  */}
-          {/* <Col className="mt-3" sm={4}>
-            <FilterButtonResultSearchRecipes />
-          </Col> */}
           <Row className="mt-sm-3">
-            {
-              <div>
-                Resultados de{" "}
-                <strong className="text-decoration-underline">
-                  {inputSearch}
-                </strong>
-              </div>
-            }
+            <div>
+              { 'Resultados de: '} 
+              <strong className="text-decoration-underline">
+                {inputSearch}
+              </strong>
+            </div>
 
             {resultSearch?.map((element) => (
               <Col
@@ -71,27 +54,14 @@ const BuscadorPlatos = () => {
               </Col>
             ))}
 
-            {/* <Row className="my-4"> */}
-            {/* {console.log("loadingSearchFood", loadingSearchFood)} */}
-            {/* <Col className="d-flex justify-content-center" sm={12}> */}
-            {loadingSearchFood && (
-              <>
-                {/* ver si esta COL del skeleton sirven para algo, mepa q NO SIRVEN... sacar sino */}
-                {/* <Col className="d-flex justify-content-center" sm={12}> */}{" "}
-                <SkeletonLoadingRecipes /> {/* </Col> */}
-              </>
-            )}
-            {/* </Col> */}
-            {/* <Row> */}
+            {loadingSearchFood && <SkeletonLoadingRecipes />}
+
             <Col sm={12} className="mt-3 mb-5 d-flex justify-content-center">
               <SeeMoreResult
                 setResultSearch={setResultSearch}
                 setPage={setPage}
               />
             </Col>
-            {/* </Row> */}
-
-            {/* </Row> */}
           </Row>
         </>
       ) : (

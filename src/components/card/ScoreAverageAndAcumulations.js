@@ -10,6 +10,7 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
         Información del menú:
       </Card.Header>
       <Card.Body className="d-flex flex-row flex-wrap bg-primary">
+        
         <Col
           sm={12}
           md={3}
@@ -28,6 +29,7 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
           <i className="fa fa-arrow-circle-right" aria-hidden="true" /> Tiempo
           preparación menu: {averagePrepTime} Min
         </Col>
+
         <Col
           className="fw-bolder info text-sm-start text-md-center px-2 py-1"
           sm={12}

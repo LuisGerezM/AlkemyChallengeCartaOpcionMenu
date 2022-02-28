@@ -5,7 +5,6 @@ import UserAuthContext from "../../context/userContext";
 const PrivateRoute = ({ children }) => {
   const { tokenUser } = useContext(UserAuthContext);
 
-  // ver después si le dejamos el state ;; <Navigate to="/login" state={{ location }} />;
   if (!tokenUser) return <Navigate to="/login" />;
 
   return children;

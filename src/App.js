@@ -1,6 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import NotFound from "views/NotFound";
-import "./App.css";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import MenuProvider from "./context/menuContext/MenuProvider";
 import UserProvider from "./context/userContext/UserProvider";

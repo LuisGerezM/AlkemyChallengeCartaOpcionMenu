@@ -17,14 +17,13 @@ const Modal = ({ contenyResult, content, title }) => {
         title={title}
       />
       <Col className="summary-col d-flex justify-content-between align-items-center py-2">
-        {/* <Button variant='ligth p-2'> 👁️ </Button> */}
         <Button className="summary" variant="ligth p-2" onClick={handleShow}>
           <div
             className="text-truncate col-11"
             dangerouslySetInnerHTML={{
               __html: `${contenyResult.phrasesContentShow}.`,
             }}
-          />{" "}
+          />
         </Button>
       </Col>
     </>

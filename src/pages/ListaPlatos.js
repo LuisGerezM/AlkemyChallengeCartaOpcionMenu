@@ -1,32 +1,19 @@
 import MessageAlert from "components/alerts/MessageAlert";
 import ScoreAverageAndAcumulations from "components/card/ScoreAverageAndAcumulations";
-import React, { useContext, useState } from "react";
-import { Button, Col, Row, Alert } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import CustomButton from "../components/button/CustomButton";
+import React, { useContext } from "react";
+import { Col, Row } from "react-bootstrap";
 import ItemList from "../components/card/ItemList";
 import MenuContext from "../context/menuContext";
 
 const ListaPlatos = () => {
-  const { platosSelected, loadingList, setLoadingList, infoScoreMenu } =
-    useContext(MenuContext);
-
-  // console.log("platosSelected ListaPlatos.js", platosSelected);
-
-  // useEffect(() => {
-  //   first
-
-  //   return () => {
-  //     second
-  //   }
-  // }, [third])
+  const { platosSelected, infoScoreMenu } = useContext(MenuContext);
 
   if (platosSelected.length === 0) {
     return (
       <MessageAlert
         message=" Aún no tienes platos seleccionados, por favor busca tu receta favorita"
         color={"info"}
-        heading="Atención!!!"
+        heading="Bienvenido!!!"
       />
     );
   }

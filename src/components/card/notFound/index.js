@@ -15,7 +15,7 @@ const index = () => {
           <Card.Text className="text-center">
             <Image src={warning} />
             <Image src={notFound} />
-          </Card.Text>{" "}
+          </Card.Text>
         </Col>
         <Card.Text className="text-center fs-4">
           Página no encontrada!!

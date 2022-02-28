@@ -8,9 +8,8 @@ function addRecipe(
   platosVeganoSeleccionado,
   platosOtrasDietas
 ) {
-  // console.log(item);
   if (item.vegan) {
-    // es vegano
+    // control platos veganos
     if (platosVeganoSeleccionado === 2)
       return sweetAlertMsg(
         "error",
@@ -29,6 +28,7 @@ function addRecipe(
       "Felicitaciones"
     );
   } else {
+    // control platos no veganos
     if (platosOtrasDietas === 2)
       return sweetAlertMsg(
         "error",
