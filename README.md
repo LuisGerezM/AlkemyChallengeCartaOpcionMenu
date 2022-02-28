@@ -1,4 +1,4 @@
-# Alkemy Challenge "Carta de pciones de Menús" 
+# Alkemy Challenge "Carta de opciones de Menús" 
 
 [![](https://spoonacular.com/application/frontend/images/food-api/ontology2.svg)](https://spoonacular.com/food-api)
 
