@@ -5,7 +5,7 @@ import MenuContext from "../../../context/menuContext";
 import { sweetAlertMsg } from "../../../helper/sweetAlerts/sweetAlertMsg";
 import CustomButton from "../../button/CustomButton";
 import FormControlInput from "../FormControlInput";
-import '../styles.css'
+import "../styles.css";
 
 const FormSearch = () => {
   const {
@@ -18,38 +18,6 @@ const FormSearch = () => {
     INITIAL_PAGE,
   } = useContext(MenuContext);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   // reiniciamos pagina inicial
-  //   // console.log("INITIAL_PAGE en formSearch", INITIAL_PAGE);
-  //   setPage(INITIAL_PAGE);
-  //   setInputSearch(null);
-
-  //   // mostramos el loading de la 1ra busqueda
-  //   setLoadingSearchFood(true);
-
-  //   let input = e.target.search.value;
-  //   const fetch = await fetchRecipes(input);
-  //   // console.log("fetch", fetch);
-  //   // este msj es para cuándo no exista la receta
-  //   if (fetch.results.length === 0) {
-  //     sweetAlertMsg(
-  //       "info",
-  //       "No existe esa receta, quiza escribiste mal",
-  //       "Atención"
-  //     );
-  //     // } else if (fetch.results.length === 0) {
-  //     //   sweetAlertMsg("info", "No hay más recetas", "Atención");
-  //     //   setDisabledButtonMoreRecipes(true);
-  //   } else {
-  //     setInputSearch(input);
-  //     setResultSearch(fetch.results);
-  //     setDisabledButtonMoreRecipes(false);
-  //   }
-  //   e.target.search.value = "";
-  // };
-
   return (
     <Formik
       initialValues={{
@@ -58,9 +26,7 @@ const FormSearch = () => {
       validate={(valueValidate) => {
         let errors = {};
         const { search } = valueValidate;
-        // console.log("search validate", search.length);
-        // console.log("valueValidate", valueValidate);
-        // validamos que tenga algo escrito
+
         if (!search) {
           errors.search = "Debes escribir lo que quieras buscar";
         } else if (search.length < 3) {
@@ -71,31 +37,29 @@ const FormSearch = () => {
       onSubmit={async (valueSubmit, { resetForm }) => {
         resetForm();
 
-        // elimino resultados anteriores
-        setResultSearch([]);
-        // reiniciamos pagina inicial
-        // console.log("INITIAL_PAGE en formSearch", INITIAL_PAGE);
+        // reiniciamos pagina resultados inicial
         setPage(INITIAL_PAGE);
+
+        // reseteamos estados
+        setResultSearch([]);
         setInputSearch(null);
+
         const { search } = valueSubmit;
-        // mostramos el loading de la 1ra busqueda
+
+        // loading de la 1ra busqueda
         setLoadingSearchFood(true);
-        // console.log("search buscado", search);
-        //let input = e.target.search.value;
+
         const fetch = await fetchRecipes(search);
-        // console.log("fetch", fetch);
-        // este msj es para cuándo no exista la receta
+
         if (fetch.results.length === 0) {
+          // no existe receta
           sweetAlertMsg(
             "info",
             `No encontramos la receta ${search}, quiza escribiste mal`,
             "Atención"
           );
-
-          // } else if (fetch.results.length === 0) {
-          //   sweetAlertMsg("info", "No hay más recetas", "Atención");
-          //   setDisabledButtonMoreRecipes(true);
         } else {
+          // existe receta
           setInputSearch(search);
           setResultSearch(fetch.results);
           setDisabledButtonMoreRecipes(false);
@@ -115,12 +79,7 @@ const FormSearch = () => {
             handleChange={handleChange}
             handleBlur={handleBlur}
           />
-          <CustomButton
-            variant="outline-success"
-            text="Buscar"
-            type="submit"
-            //handleClickButton={handleClickButton}
-          />
+          <CustomButton variant="outline-success" text="Buscar" type="submit" />
         </Form>
       )}
     </Formik>

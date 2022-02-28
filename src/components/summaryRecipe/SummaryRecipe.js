@@ -14,7 +14,8 @@ const SummaryRecipe = ({
 }) => {
   const contenyResult = useShortenSummary(content);
 
-  const params = useLocation(); // obtengo un obj con eltos. y uno d estos es pathname: "/buscador-platos"
+  // chequeo page dónde estoy
+  const params = useLocation();
 
   return (
     <>
@@ -40,7 +41,7 @@ const SummaryRecipe = ({
         ⛑
         {params.pathname !== "/detalles-plato"
           ? ` ${healthScore} pts.`
-          : ` Healt score: ${healthScore} pts.`} 
+          : ` Healt score: ${healthScore} pts.`}
       </ListGroup.Item>
       <ListGroup.Item>
         {vegan ? <div> ✅ Plato vegano</div> : <div> ❌ Plato no vegano</div>}
@@ -48,7 +49,5 @@ const SummaryRecipe = ({
     </>
   );
 };
-
-/*params.pathname !== "/detalles-plato"  */
 
 export default SummaryRecipe;

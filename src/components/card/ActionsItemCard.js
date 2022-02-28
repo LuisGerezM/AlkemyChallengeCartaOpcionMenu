@@ -11,10 +11,10 @@ const ActionsItemCard = ({
   item,
   from,
 }) => {
-  // console.log('from en actions item card', from, item, handlerDeleteItem)
   const { stateBtnAdd, actionBtnDetails } = useContext(MenuContext);
 
-  const params = useLocation(); // obtengo un obj con eltos. y uno d estos es pathname: "/buscador-platos"
+  // chequeo page dónde estoy
+  const params = useLocation();
 
   return (
     <Row>
@@ -31,7 +31,7 @@ const ActionsItemCard = ({
             from={from}
           />
         )}
-        {/* VER SI ANDA BIEN ESTO DEL DESHABILITAR EL BTN ADD  */}
+
         {/* add */}
         {(params.pathname === "/buscador-platos" ||
           (params.pathname === "/detalles-plato" &&

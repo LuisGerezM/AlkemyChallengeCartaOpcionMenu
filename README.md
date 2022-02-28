@@ -66,21 +66,21 @@ login. Para el manejo de rutas se deberá utilizar ReactRouterDom.
 
 Criterios a evaluar:
 
-        ● Almacenamiento y consulta del token en local storage
-        ● Peticiones a los endpoints de autenticación de la API
-        ● Actualizar estado de la aplicación si el usuario está autenticado
-        ● Generar un mensaje para informar al usuario mientras hace una operación.
-        ● Crear componentes de formularios con campos tipo texto y numérico que persistan el input del usuario en el estado. Por ejemplo: nombre de usuario, password, datos personales.
-        ● Validar el contenido de los campos de formularios.
-        ● Desarrollar componentes que puedan mostrar datos recibidos por propiedades.
-        ● Renderizar una lista recibida por propiedades realizando una iteración sobre la misma.
-        ● Desarrollar un componente de navegación que utilice una librería para manejar las rutas (por ejemplo ReactRouterDom).
-        ● Renderizar el contenido de forma dinámica según la ruta actual de la aplicación.
-        ● Utilizar una librería de frontend para estandarizar los estilos de los elementos visuales en la aplicación (por ejemplo bootstrap).
-        ● Utilizando axios, realizar peticiones HTTP desde los componentes. Por ejemplo, GET y POST.
-        ● Manejar las excepciones en el caso de que las peticiones no puedan realizarse correctamente.
-        ● Agregar elementos visuales (como alerta, editor de texto enriquecido) utilizando un SDK específico en base a los requerimientos.
-        ● Utilizar Hooks.
+    ● Almacenamiento y consulta del token en local storage
+    ● Peticiones a los endpoints de autenticación de la API
+    ● Actualizar estado de la aplicación si el usuario está autenticado
+    ● Generar un mensaje para informar al usuario mientras hace una operación.
+    ● Crear componentes de formularios con campos tipo texto y numérico que persistan el input del usuario en el estado. Por ejemplo: nombre de usuario, password, datos personales.
+    ● Validar el contenido de los campos de formularios.
+    ● Desarrollar componentes que puedan mostrar datos recibidos por propiedades.
+    ● Renderizar una lista recibida por propiedades realizando una iteración sobre la misma.
+    ● Desarrollar un componente de navegación que utilice una librería para manejar las rutas (por ejemplo ReactRouterDom).
+    ● Renderizar el contenido de forma dinámica según la ruta actual de la aplicación.
+    ● Utilizar una librería de frontend para estandarizar los estilos de los elementos visuales en la aplicación (por ejemplo bootstrap).
+    ● Utilizando axios, realizar peticiones HTTP desde los componentes. Por ejemplo, GET y POST.
+    ● Manejar las excepciones en el caso de que las peticiones no puedan realizarse correctamente.
+    ● Agregar elementos visuales (como alerta, editor de texto enriquecido) utilizando un SDK específico en base a los requerimientos.
+    ● Utilizar Hooks.
 
 ## Bonus track!
 Si terminaste los puntos anteriores y queres destacarte optimizando la resolución tu challenge, te invitamos a realizar (esto es opcional) los siguientes requerimientos:

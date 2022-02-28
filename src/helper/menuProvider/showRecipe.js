@@ -9,10 +9,8 @@ export default function showRecipe(
 ) {
   from === "lista" ? setActionBtnDetails(1) : setActionBtnDetails(2);
 
-  // console.log("item", item);
-
-  setBtnsActionsValue("3"); // con esto hacemos que NO esté seleccionado ningun boton del toogle
-  // console.log("item", item);
+  // en detalles-plato disableamos btn toogle
+  setBtnsActionsValue("3");
 
   const { id } = item;
   setLoadingSelectedDetails(true);

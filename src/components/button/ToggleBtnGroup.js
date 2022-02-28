@@ -4,8 +4,9 @@ import { ButtonGroup, ToggleButton } from "react-bootstrap";
 import { buttonsPages } from "helper/pages/buttonPages";
 
 const ToggleBtnGroup = ({ handleToggleBtnClick }) => {
-  // const [btnsActionsValue, setBtnsActionsValue] = useState("1");
+
   const { btnsActionsValue, setBtnsActionsValue } = useContext(MenuContext);
+  
   const buttonsActions = buttonsPages();
 
   return (

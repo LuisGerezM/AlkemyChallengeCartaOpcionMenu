@@ -11,7 +11,6 @@ export default async function searchRecipe(recipe, setLoadingSearchFood) {
   } catch (error) {
     console.log("error en cath fetchRecipes", error);
     sweetAlertMsg("error", `${error}`, "Atención");
-    // return { error };
   } finally {
     setLoadingSearchFood(false);
   }

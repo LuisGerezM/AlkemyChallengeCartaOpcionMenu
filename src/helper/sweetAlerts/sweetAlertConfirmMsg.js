@@ -15,8 +15,6 @@ export function sweetAlertConfirmSaveToken(
   setPlatosVeganoSeleccionado,
   setPlatosOtrasDietas
 ) {
-  // console.log("item y platoSelected", item, platosSelected);
-
   Swal.fire({
     icon: `${icon}`,
     title: `${title}`,

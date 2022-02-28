@@ -8,16 +8,18 @@ export function sweetAlertConfirmSaveToken(readToken) {
     confirmButtonText: "Guardar",
     denyButtonText: `Eliminar`,
   }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
+      // dejamos datos del localstorage
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Datos Guardados!",
+        title: "Datos Guardados correctamente!",
         showConfirmButton: false,
         timer: 1500,
       });
     } else if (result.isDenied) {
+      // eliminamos datos del localstorage
+      window.localStorage.removeItem("logged-carta-opcionmenu");
       Swal.fire({
         position: "top-end",
         icon: "info",
@@ -25,8 +27,6 @@ export function sweetAlertConfirmSaveToken(readToken) {
         showConfirmButton: false,
         timer: 1500,
       });
-      // eliminamos datos del localstorage
-      window.localStorage.removeItem("logged-carta-opcionmenu");
     }
     readToken({ token: "", email: "" });
   });

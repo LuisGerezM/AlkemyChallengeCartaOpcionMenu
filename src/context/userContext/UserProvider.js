@@ -6,30 +6,26 @@ const UserProvider = ({ children }) => {
   const [tokenUser, setTokenUser] = useState(null);
   const [emailUser, setEmailUser] = useState("");
 
-  // chequemos existencia de token de usuario en local storage, si existe lo almacenamos en tokenUser
+  // check token usuario local storage
   useEffect(() => {
-    // console.log('BUSCAMOS TOKEN en UserProvider')
     const userToken = window.localStorage.getItem("logged-carta-opcionmenu");
-    // console.log('user JSON', userToken)
+
     if (userToken) {
+      // existe, almacenamos en estado
       const user = JSON.parse(userToken);
       readToken(user);
     }
   }, []);
 
-  // funcion para leer el token de inicio 
+  // lee token
   const readToken = (dataUser) => {
-    // console.log("dataUser", dataUser);
     setTokenUser(dataUser.token);
     setEmailUser(dataUser.email);
   };
 
   const fetchUser = async (user) => {
-    // console.log('user2', user)
     try {
       const fetchUser = await methodsApi.getUser(user);
-      // console.log("fetchUser user provier", fetchUser);
-
       if (fetchUser.status === 200) return fetchUser.data;
 
       throw new Error("Vaya ocurrió un error inesperado");
