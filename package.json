@@ -2,7 +2,7 @@
   "name": "alkemy-challenger-carta-opcionmenus",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://LuisGerezM.github.io/AlkemyChallengerCartaOpcionMenu/login",
+  "homepage": "http://LuisGerezM.github.io/login",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",

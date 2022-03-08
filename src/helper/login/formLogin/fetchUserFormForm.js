@@ -6,34 +6,39 @@ export default async function fetchUserFromForm(
   setLoadingLogin,
   fetchUser
 ) {
-  const { email, password } = dataUser;
-  // buscando usuario
-  const checkLogin = await fetchUser({ email, password });
+  try {
+    const { email, password } = dataUser;
+    // buscando usuario
+    const checkLogin = await fetchUser({ email, password });
 
-  if (checkLogin.token !== "error") {
-    let token = checkLogin.token;
-    const user = { token, email };
-    readToken(user);
+    if (checkLogin.token !== "error") {
+      let token = checkLogin.token;
+      const user = { token, email };
+      readToken(user);
 
-    // almacenando token localStorage
-    window.localStorage.setItem(
-      "logged-carta-opcionmenu",
-      JSON.stringify(user)
-    );
-  } else {
-    // error null o undefined
-    !checkLogin && sweetAlertMsg("error", checkLogin.error, "Oops... Error");
+      // almacenando token localStorage
+      window.localStorage.setItem(
+        "logged-carta-opcionmenu",
+        JSON.stringify(user)
+      );
+    } else {
+      // error null o undefined
+      !checkLogin && sweetAlertMsg("error", checkLogin.error, "Oops... Error");
 
-    // error network
-    !checkLogin.error.response &&
-      sweetAlertMsg("error", checkLogin.error.message, "Oops... Error");
+      // error network
+      !checkLogin.error.response &&
+        sweetAlertMsg("error", checkLogin.error.message, "Oops... Error");
 
-    // orro error
-    sweetAlertMsg(
-      "error",
-      checkLogin.error.response.data.error,
-      "Oops... Error"
-    );
+      // orro error
+      sweetAlertMsg(
+        "error",
+        checkLogin.error.response.data.error,
+        "Oops... Error"
+      );
+    }
+  } catch (error) {
+    console.log("entre al catch");
+  } finally {
+    setLoadingLogin(false);
   }
-  setLoadingLogin(false);
 }
