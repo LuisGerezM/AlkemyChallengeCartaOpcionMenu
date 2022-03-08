@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/AlkemyChallengerCartaOpcionMenu/login/static/css/main.1234f674.css",
-    "main.js": "/AlkemyChallengerCartaOpcionMenu/login/static/js/main.5c9c5b25.js",
-    "static/js/787.b4fbeb3c.chunk.js": "/AlkemyChallengerCartaOpcionMenu/login/static/js/787.b4fbeb3c.chunk.js",
-    "static/media/no-fotos.png": "/AlkemyChallengerCartaOpcionMenu/login/static/media/no-fotos.0700f0a58e9c5dec674f.png",
-    "static/media/user.png": "/AlkemyChallengerCartaOpcionMenu/login/static/media/user.38b097360cd1024e4462.png",
-    "static/media/warning.png": "/AlkemyChallengerCartaOpcionMenu/login/static/media/warning.923fd4a571feb41f1f1f.png",
-    "static/media/404-error.png": "/AlkemyChallengerCartaOpcionMenu/login/static/media/404-error.36c0c559fe9483e719e7.png",
-    "index.html": "/AlkemyChallengerCartaOpcionMenu/login/index.html",
-    "main.1234f674.css.map": "/AlkemyChallengerCartaOpcionMenu/login/static/css/main.1234f674.css.map",
-    "main.5c9c5b25.js.map": "/AlkemyChallengerCartaOpcionMenu/login/static/js/main.5c9c5b25.js.map",
-    "787.b4fbeb3c.chunk.js.map": "/AlkemyChallengerCartaOpcionMenu/login/static/js/787.b4fbeb3c.chunk.js.map"
+    "main.css": "/AlkemyChallengerCartaOpcionMenu/static/css/main.1234f674.css",
+    "main.js": "/AlkemyChallengerCartaOpcionMenu/static/js/main.4719b416.js",
+    "static/js/787.b4fbeb3c.chunk.js": "/AlkemyChallengerCartaOpcionMenu/static/js/787.b4fbeb3c.chunk.js",
+    "static/media/no-fotos.png": "/AlkemyChallengerCartaOpcionMenu/static/media/no-fotos.0700f0a58e9c5dec674f.png",
+    "static/media/user.png": "/AlkemyChallengerCartaOpcionMenu/static/media/user.38b097360cd1024e4462.png",
+    "static/media/warning.png": "/AlkemyChallengerCartaOpcionMenu/static/media/warning.923fd4a571feb41f1f1f.png",
+    "static/media/404-error.png": "/AlkemyChallengerCartaOpcionMenu/static/media/404-error.36c0c559fe9483e719e7.png",
+    "index.html": "/AlkemyChallengerCartaOpcionMenu/index.html",
+    "main.1234f674.css.map": "/AlkemyChallengerCartaOpcionMenu/static/css/main.1234f674.css.map",
+    "main.4719b416.js.map": "/AlkemyChallengerCartaOpcionMenu/static/js/main.4719b416.js.map",
+    "787.b4fbeb3c.chunk.js.map": "/AlkemyChallengerCartaOpcionMenu/static/js/787.b4fbeb3c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1234f674.css",
-    "static/js/main.5c9c5b25.js"
+    "static/js/main.4719b416.js"
   ]
 }
