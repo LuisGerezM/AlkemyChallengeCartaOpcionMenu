@@ -29,7 +29,7 @@ export default async function fetchUserFromForm(
       !checkLogin.error.response &&
         sweetAlertMsg("error", checkLogin.error.message, "Oops... Error");
 
-      // orro error
+      // otro error
       sweetAlertMsg(
         "error",
         checkLogin.error.response.data.error,
@@ -37,7 +37,12 @@ export default async function fetchUserFromForm(
       );
     }
   } catch (error) {
-    console.log("entre al catch");
+    // error protocol
+    sweetAlertMsg(
+      "error",
+      "Ocurrió un error inesperado, ponte en contacto con el administrador",
+      "Oops... Error"
+    );
   } finally {
     setLoadingLogin(false);
   }
