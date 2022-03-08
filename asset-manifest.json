@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/AlkemyChallengerCartaOpcionMenu/static/css/main.1234f674.css",
+    "main.js": "/AlkemyChallengerCartaOpcionMenu/static/js/main.ca3d8151.js",
+    "static/js/787.b4fbeb3c.chunk.js": "/AlkemyChallengerCartaOpcionMenu/static/js/787.b4fbeb3c.chunk.js",
+    "static/media/no-fotos.png": "/AlkemyChallengerCartaOpcionMenu/static/media/no-fotos.0700f0a58e9c5dec674f.png",
+    "static/media/user.png": "/AlkemyChallengerCartaOpcionMenu/static/media/user.38b097360cd1024e4462.png",
+    "static/media/warning.png": "/AlkemyChallengerCartaOpcionMenu/static/media/warning.923fd4a571feb41f1f1f.png",
+    "static/media/404-error.png": "/AlkemyChallengerCartaOpcionMenu/static/media/404-error.36c0c559fe9483e719e7.png",
+    "index.html": "/AlkemyChallengerCartaOpcionMenu/index.html",
+    "main.1234f674.css.map": "/AlkemyChallengerCartaOpcionMenu/static/css/main.1234f674.css.map",
+    "main.ca3d8151.js.map": "/AlkemyChallengerCartaOpcionMenu/static/js/main.ca3d8151.js.map",
+    "787.b4fbeb3c.chunk.js.map": "/AlkemyChallengerCartaOpcionMenu/static/js/787.b4fbeb3c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1234f674.css",
+    "static/js/main.ca3d8151.js"
+  ]
+}
