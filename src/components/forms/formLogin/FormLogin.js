@@ -1,38 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import { Form, Col, Row } from "react-bootstrap";
-import AuthUserContext from "../../../context/userContext";
 import CustomButton from "../../button/CustomButton";
 import SpinnerWithMsg from "../../spinner/SpinnerWithMsg";
 import FormGroupInput from "./FormGroupInput";
-import submitForm from "helper/login/formLogin/submitForm";
-import fetchUserFromForm from "helper/login/formLogin/fetchUserFormForm";
+import { useFormLogin } from "hooks/useFormLogin/useFormLogin";
 
 const FormLogin = () => {
-  const { fetchUser, readToken } = useContext(AuthUserContext);
-  const [errorValidated, setErrorValidated] = useState(false);
-  const [loadingLogin, setLoadingLogin] = useState(false);
-  const [dataUser, setDataUser] = useState(null);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    submitForm(
-      event,
-      setDataUser,
-      setErrorValidated,
-      setLoadingLogin,
-      fetchUser,
-      readToken
-    );
-  };
-
-  useEffect(() => {
-    dataUser &&
-      fetchUserFromForm(dataUser, readToken, setLoadingLogin, fetchUser);
-
-    return () => {
-      setDataUser(null);
-    };
-  }, [dataUser, readToken, fetchUser]);
+  const { errorValidated, handleSubmit, loadingLogin } = useFormLogin();
 
   return (
     <Form noValidate validated={errorValidated} onSubmit={handleSubmit}>

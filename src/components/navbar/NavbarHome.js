@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
 import { Container, Navbar, NavDropdown } from "react-bootstrap";
 import { navDropdownImage } from "./image/navDropdownImage";
-import { sweetAlertConfirmSaveToken } from "helper/sweetAlerts/sweetAlertConfirmSaveToken";
+import { helpSweetAlertConfirmSaveToken } from "helper/helpSweetAlerts/helpSweetAlertConfirmSaveToken";
 import AuthUserContext from "context/userContext";
 
 const NavbarHome = () => {
   const { readToken } = useContext(AuthUserContext);
 
   const logOut = () => {
-    sweetAlertConfirmSaveToken(readToken);
+    helpSweetAlertConfirmSaveToken(readToken);
   };
 
   return (

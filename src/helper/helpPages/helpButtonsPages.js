@@ -1,4 +1,4 @@
-export const buttonsPages = () => {
+export const helpButtonsPages = () => {
   const buttons = [
     {
       name: "Lista Platos",

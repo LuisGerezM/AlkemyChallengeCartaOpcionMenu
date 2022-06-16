@@ -26,7 +26,9 @@ export default function ModalSummary(props) {
         />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="success" onClick={props.onHide}>Close</Button>
+        <Button variant="success" onClick={props.onHide}>
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

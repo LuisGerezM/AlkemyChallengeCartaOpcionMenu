@@ -10,7 +10,6 @@ const ScoreAverageAndAcumulations = ({ infoScoreMenu }) => {
         Información del menú:
       </Card.Header>
       <Card.Body className="d-flex flex-row flex-wrap bg-primary">
-        
         <Col
           sm={12}
           md={3}

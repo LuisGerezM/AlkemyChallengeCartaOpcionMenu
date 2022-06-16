@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Formik } from "formik";
 import { Form } from "react-bootstrap";
 import MenuContext from "../../../context/menuContext";
-import { sweetAlertMsg } from "../../../helper/sweetAlerts/sweetAlertMsg";
+import { helpSweetAlertMsg } from "../../../helper/helpSweetAlerts/helpSweetAlertMsg";
 import CustomButton from "../../button/CustomButton";
 import FormControlInput from "../FormControlInput";
 import "../styles.css";
@@ -53,7 +53,7 @@ const FormSearch = () => {
 
         if (fetch.results.length === 0) {
           // no existe receta
-          sweetAlertMsg(
+          helpSweetAlertMsg(
             "info",
             `No encontramos la receta ${search}, quiza escribiste mal`,
             "Atención"
