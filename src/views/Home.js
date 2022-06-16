@@ -6,7 +6,6 @@ import ToggleBtnGroup from "../components/button/ToggleBtnGroup";
 import MenuContext from "context/menuContext";
 
 const Home = () => {
-  
   const { handleToggleBtnClick } = useContext(MenuContext);
 
   return (

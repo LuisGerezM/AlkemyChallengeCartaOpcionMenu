@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-export function sweetAlertConfirmSaveToken(readToken) {
+export function helpSweetAlertConfirmSaveToken(readToken) {
   Swal.fire({
     icon: "question",
     title: "Deseas guardar sus datos para el próximo inicio de sesión?",

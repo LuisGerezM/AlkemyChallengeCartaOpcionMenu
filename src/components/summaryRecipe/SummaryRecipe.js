@@ -1,8 +1,7 @@
-import useShortenSummary from "hooks/useShortenSummary";
-import React from "react";
 import { Card, ListGroup, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import ModalSum from "./modalSummary";
+import helpShortenSummary from "helper/helpShortenSummary";
 import "./styles.css";
 
 const SummaryRecipe = ({
@@ -12,7 +11,7 @@ const SummaryRecipe = ({
   readyInMinutes,
   healthScore,
 }) => {
-  const contenyResult = useShortenSummary(content);
+  const contenyResult = helpShortenSummary(content);
 
   // chequeo page dónde estoy
   const params = useLocation();

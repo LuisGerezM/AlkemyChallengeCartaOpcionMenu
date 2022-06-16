@@ -7,8 +7,7 @@ import MenuContext from "../context/menuContext";
 
 const ListaPlatos = () => {
   const { platosSelected, infoScoreMenu } = useContext(MenuContext);
-
-  if (platosSelected.length === 0) {
+  if (platosSelected?.length === 0) {
     return (
       <MessageAlert
         message=" Aún no tienes platos seleccionados, por favor busca tu receta favorita"
