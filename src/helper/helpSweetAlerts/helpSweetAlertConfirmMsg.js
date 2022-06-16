@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-export function sweetAlertConfirmSaveToken(
+export function helpSweetAlertConfirmMsg(
   title,
   icon,
   confirmButtonText,

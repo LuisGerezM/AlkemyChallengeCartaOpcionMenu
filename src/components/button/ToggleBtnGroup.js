@@ -1,13 +1,12 @@
 import MenuContext from "context/menuContext";
 import React, { useContext } from "react";
 import { ButtonGroup, ToggleButton } from "react-bootstrap";
-import { buttonsPages } from "helper/pages/buttonPages";
+import { helpButtonsPages } from "helper/helpPages/helpButtonsPages";
 
 const ToggleBtnGroup = ({ handleToggleBtnClick }) => {
-
   const { btnsActionsValue, setBtnsActionsValue } = useContext(MenuContext);
-  
-  const buttonsActions = buttonsPages();
+
+  const buttonsActions = helpButtonsPages();
 
   return (
     <ButtonGroup className="mt-2 col col-12">

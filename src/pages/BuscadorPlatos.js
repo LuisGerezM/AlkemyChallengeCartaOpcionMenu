@@ -37,7 +37,7 @@ const BuscadorPlatos = () => {
         <>
           <Row className="mt-sm-3">
             <div>
-              { 'Resultados de: '} 
+              {"Resultados de: "}
               <strong className="text-decoration-underline">
                 {inputSearch}
               </strong>

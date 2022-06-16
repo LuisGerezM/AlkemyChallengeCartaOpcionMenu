@@ -1,4 +1,4 @@
-const useShortenSummary = (content) => {
+const utilShortenSummary = (content) => {
   let phrasesContent = content.split(".");
 
   let phrasesContentShow = phrasesContent.slice(0, 1).join();
@@ -6,4 +6,4 @@ const useShortenSummary = (content) => {
   return { phrasesContentShow };
 };
 
-export default useShortenSummary;
+export default utilShortenSummary;

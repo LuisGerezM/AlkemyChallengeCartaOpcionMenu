@@ -9,7 +9,7 @@ const getUser = async (user) => {
 const getRecipes = async (recipe, page = 0, number = 6) => {
   const request = await axios.get(
     `${process.env.REACT_APP_BASEURL_API}complexSearch?apiKey=${
-      process.env.REACT_APP_FIREBASE_APIKEY
+      process.env.REACT_APP_APIKEY
     }&query=${recipe}&number=${number}&offset=${
       page * number
     }&addRecipeInformation=true`
@@ -20,7 +20,7 @@ const getRecipes = async (recipe, page = 0, number = 6) => {
 // busca receta por id
 const getRecipeById = async (recipeId) => {
   const request = await axios.get(
-    `${process.env.REACT_APP_BASEURL_API}${recipeId}/information?apiKey=${process.env.REACT_APP_FIREBASE_APIKEY}`
+    `${process.env.REACT_APP_BASEURL_API}${recipeId}/information?apiKey=${process.env.REACT_APP_APIKEY}`
   );
   return request;
 };
