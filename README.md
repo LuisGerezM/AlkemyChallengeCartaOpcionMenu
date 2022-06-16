@@ -1,18 +1,27 @@
-# Alkemy Challenge "Carta de opciones de Menús" 
+# Alkemy Challenge "Carta de opciones de Menús"
 
 [![](https://spoonacular.com/application/frontend/images/food-api/ontology2.svg)](https://spoonacular.com/food-api)
 
+### Prueba:
+
+- https://luisgerezm.github.io/AlkemyChallengerCartaOpcionMenu/#/login
+
+        Credenciales:
+            - Email: challenge@alkemy.org
+            - Password: react
+
 ## APIS:
+
 - Autenticación:
-http://challenge-react.alkemy.org/ 
+  http://challenge-react.alkemy.org/
 
 - API Food
-https://spoonacular.com/food-api/docs
+  https://spoonacular.com/food-api/docs
 
 ## Requerimientos Funcionales
 
 En la pantalla de Home se deberá mostrar, además de los platos que conforman el menú:
-  
+
     ● Acumulativo de precio del menú.
     ● Promedio de tiempo de preparación entre todos los platos.
     ● Promedio de Healt Score entre todos los platos.
@@ -26,6 +35,7 @@ Aprovechando las características de React, deberán crearse las siguientes secc
 Además, para el manejo de peticiones HTTP deberá utilizarse la librería Axios. Y el sitio deberá ser responsive, y utilizar Bootstrap como punto de partida para aprovechar las características de la librería.
 
 ### 1. Formulario de Login
+
 El formulario se deberá renderizar al ingresar a cualquier ruta si el usuario no está autenticado, conteniendo los campos:
 
     ● Email.
@@ -45,6 +55,7 @@ En el caso de obtener un error de la API, se deberá mostrar una alerta (utiliza
 realizar las validaciones no es necesario utilizar ninguna librería.
 
 ### 2. Platos
+
 El Home de la aplicación mostrará los platos del menú en un listado. Cada ítem (el cuál debe ser un componente separado) del listado contendrá:
 
     ● Nombre del plato.
@@ -53,14 +64,17 @@ El Home de la aplicación mostrará los platos del menú en un listado. Cada ít
     ● Acciones para ver el detalle o eliminarlo del menú.
 
 ### 3. Buscador de Platos
+
 Para agregar un plato al menú, se deberá visualizar un formulario que realice una petición GET al endpoint de búsqueda y muestre los resultados disponibles en un grid, utilizando el componente de ítem del punto anterior.
 El formulario deberá buscar únicamente si hay más de 2 caracteres en el filtro, caso contrario no debe mostrar nada. La validación deberá realizarse utilizando la librería Formik.
 
 ### 4. Detalle del Plato
+
 Al hacer click en un plato del menú, se mostrarán los detalles de los campos acumulados y
 promediados en el menú.
 
 ### 5. Navegación entre secciones
+
 Las diferentes secciones que tendrá la app deberán protegerse verificando que el usuario autenticado disponga de un token que se almacenará en localStorage. El mismo, se obtendrá de una API con datos de muestra. Si un usuario intenta ingresar a cualquier ruta sin estar autenticado, deberá ser redirigido al
 login. Para el manejo de rutas se deberá utilizar ReactRouterDom.
 
@@ -83,6 +97,7 @@ Criterios a evaluar:
     ● Utilizar Hooks.
 
 ## Bonus track!
+
 Si terminaste los puntos anteriores y queres destacarte optimizando la resolución tu challenge, te invitamos a realizar (esto es opcional) los siguientes requerimientos:
 
     ● Test, en caso de conocer el procedimiento se pueden agregar tests unitarios para validar los elementos de la app:

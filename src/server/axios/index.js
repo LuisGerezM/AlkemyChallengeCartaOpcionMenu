@@ -6,17 +6,16 @@ const getUser = async (user) => {
   // const request = await axios.post(process.env.REACT_APP_BASEURL_ALKEMY, user);
   // return request;
 
-  // i am simulate api call because i dont access to server (error CORS)
+  // i am simulating an api call because I do not have access to the server from the github pages, only from localhost.
   const { email, password } = user;
-  if (email === dataAuth[0] && password === dataAuth[1])
-    return {
+  if (email === dataAuth[0] && password === dataAuth[1]) return {
       status: 200,
       data: {
         token:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiZW1haWwiOiJjaGFsbGVuZ2VAYWxrZW15Lm9yZyIsImlhdCI6MTUxNjIzOTAyMn0.ilhFPrG0y7olRHifbjvcMOlH7q2YwlegT0f4aSbryBE",
       },
     };
-  return {
+  else return {
     status: 401,
     message: "unauthorized",
   };
