@@ -28,9 +28,25 @@ const UserProvider = ({ children }) => {
       const fetchUser = await methodsApi.getUser(user);
       if (fetchUser.status === 200) return fetchUser.data;
 
-      throw new Error("Vaya ocurrió un error inesperado");
+      throw new Error("Error");
     } catch (error) {
-      return { token: "error", error };
+      console.log({ error });
+
+      return {
+        token: "error",
+        error: {
+          message: "Request failed with status code 401",
+          name: "Error",
+          response: {
+            data: {
+              error: "Please provide valid email and password",
+            },
+            status: 401,
+            statusText: "Unauthorized",
+          },
+          status: 401,
+        },
+      };
     }
   };
 

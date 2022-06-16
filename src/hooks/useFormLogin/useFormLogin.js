@@ -44,7 +44,7 @@ export const useFormLogin = () => {
       // error null o undefined
       !checkLogin &&
         helpSweetAlertMsg("error", checkLogin.error, "Oops... Error");
-
+console.log('checkLogin', checkLogin)
       // error network
       !checkLogin.error.response &&
         helpSweetAlertMsg("error", checkLogin.error.message, "Oops... Error");
