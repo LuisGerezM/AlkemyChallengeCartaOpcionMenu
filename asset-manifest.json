@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/AlkemyChallengerCartaOpcionMenu/static/css/main.ad0d7a7c.css",
-    "main.js": "/AlkemyChallengerCartaOpcionMenu/static/js/main.aec36eb4.js",
-    "static/media/no-fotos.png": "/AlkemyChallengerCartaOpcionMenu/static/media/no-fotos.0700f0a58e9c5dec674f.png",
-    "static/media/user.png": "/AlkemyChallengerCartaOpcionMenu/static/media/user.38b097360cd1024e4462.png",
-    "static/media/warning.png": "/AlkemyChallengerCartaOpcionMenu/static/media/warning.923fd4a571feb41f1f1f.png",
-    "static/media/404-error.png": "/AlkemyChallengerCartaOpcionMenu/static/media/404-error.36c0c559fe9483e719e7.png",
-    "index.html": "/AlkemyChallengerCartaOpcionMenu/index.html",
-    "main.ad0d7a7c.css.map": "/AlkemyChallengerCartaOpcionMenu/static/css/main.ad0d7a7c.css.map",
-    "main.aec36eb4.js.map": "/AlkemyChallengerCartaOpcionMenu/static/js/main.aec36eb4.js.map"
+    "main.css": "/AlkemyChallengeCartaOpcionMenu/static/css/main.ad0d7a7c.css",
+    "main.js": "/AlkemyChallengeCartaOpcionMenu/static/js/main.e59bb228.js",
+    "static/media/no-fotos.png": "/AlkemyChallengeCartaOpcionMenu/static/media/no-fotos.0700f0a58e9c5dec674f.png",
+    "static/media/user.png": "/AlkemyChallengeCartaOpcionMenu/static/media/user.38b097360cd1024e4462.png",
+    "static/media/warning.png": "/AlkemyChallengeCartaOpcionMenu/static/media/warning.923fd4a571feb41f1f1f.png",
+    "static/media/404-error.png": "/AlkemyChallengeCartaOpcionMenu/static/media/404-error.36c0c559fe9483e719e7.png",
+    "index.html": "/AlkemyChallengeCartaOpcionMenu/index.html",
+    "main.ad0d7a7c.css.map": "/AlkemyChallengeCartaOpcionMenu/static/css/main.ad0d7a7c.css.map",
+    "main.e59bb228.js.map": "/AlkemyChallengeCartaOpcionMenu/static/js/main.e59bb228.js.map"
   },
   "entrypoints": [
     "static/css/main.ad0d7a7c.css",
-    "static/js/main.aec36eb4.js"
+    "static/js/main.e59bb228.js"
   ]
 }
