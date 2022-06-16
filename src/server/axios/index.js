@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getUser = async (user) => {
-  const request = await axios.post(process.env.REACT_APP_BASEURL_ALKEMY, user);
+  const request = await axios.post("/", user);
   return request;
 };
 
