@@ -25,8 +25,6 @@ function App() {
             <Route path="lista-platos" element={<ListaPlatos />} />
             <Route path="detalles-plato" element={<DetallePlato />} />
             <Route path="buscador-platos" element={<BuscadorPlatos />} />
-            {/* funciona esto, redirige al login, pero l osaco para que me mande al 404 */}
-            {/* <Route path="*" element={<Login />} /> */}
           </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/not-found" element={<NotFound />} />
